@@ -1,0 +1,858 @@
+/* ===========================================================
+   LifeLine AI Professional Mobile Responsive CSS
+   Version 1.0
+   Desktop remains unchanged
+   ===========================================================*/
+
+@media screen and (max-width:768px){
+
+*{
+box-sizing:border-box;
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+width:100%;
+overflow-x:hidden;
+font-size:15px;
+background:#eef3f8;
+
+}
+
+/* ======================
+   GLOBAL
+====================== */
+
+.container{
+
+padding:15px;
+
+}
+
+img{
+
+max-width:100%;
+height:auto;
+
+}
+
+button{
+
+min-height:48px;
+font-size:15px;
+
+}
+
+input,
+select,
+textarea{
+
+width:100%;
+font-size:16px;
+padding:14px;
+
+}
+
+/* ======================
+SIDEBAR
+====================== */
+
+.sidebar{
+
+position:relative;
+width:100%;
+min-height:auto;
+height:auto;
+padding:10px 0;
+
+}
+
+.sidebar h1,
+.logo{
+
+font-size:22px;
+padding:18px;
+text-align:center;
+
+}
+
+.sidebar ul{
+
+display:flex;
+overflow-x:auto;
+white-space:nowrap;
+gap:8px;
+padding:10px;
+
+}
+
+.sidebar ul::-webkit-scrollbar{
+
+display:none;
+
+}
+
+.sidebar li{
+
+display:inline-block;
+margin:0;
+
+}
+
+.sidebar a{
+
+padding:12px 18px;
+border-radius:10px;
+font-size:14px;
+
+}
+
+/* ======================
+MAIN
+====================== */
+
+.main{
+
+margin-left:0;
+width:100%;
+padding:15px;
+
+}
+
+/* ======================
+TOPBAR
+====================== */
+
+.topbar{
+
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+padding:18px;
+
+}
+
+.topbar h2{
+
+font-size:24px;
+
+}
+
+.clock{
+
+font-size:16px;
+
+}
+
+/* ======================
+STAT CARDS
+====================== */
+
+.stats{
+
+grid-template-columns:1fr;
+gap:18px;
+
+}
+
+.card{
+
+padding:22px;
+border-radius:18px;
+
+}
+
+.card h3{
+
+font-size:36px;
+
+}
+
+.card p{
+
+font-size:17px;
+
+}
+
+/* ======================
+PANELS
+====================== */
+
+.dashboard-grid{
+
+grid-template-columns:1fr;
+gap:20px;
+
+}
+
+.panel{
+
+padding:18px;
+
+}
+
+/* ======================
+EMERGENCY CARDS
+====================== */
+
+#emergencyContainer{
+
+display:flex;
+flex-direction:column;
+gap:18px;
+
+}
+
+.emergency-card{
+
+padding:18px;
+border-radius:16px;
+
+}
+
+.emergency-card h3{
+
+font-size:22px;
+
+}
+
+.emergency-card p{
+
+font-size:15px;
+line-height:1.6;
+
+}
+
+/* ======================
+ACTION BUTTONS
+====================== */
+
+.actions{
+
+display:grid;
+grid-template-columns:1fr;
+gap:10px;
+
+}
+
+.actions button{
+
+width:100%;
+padding:14px;
+font-size:15px;
+border-radius:10px;
+
+}
+/* ==========================
+   AMBULANCE TRACKING
+========================== */
+
+.topbar .logo{
+
+font-size:20px;
+
+text-align:center;
+
+width:100%;
+
+}
+
+.live{
+
+justify-content:center;
+
+width:100%;
+
+font-size:14px;
+
+}
+
+.dashboard{
+
+grid-template-columns:1fr;
+
+padding:15px;
+
+gap:15px;
+
+}
+
+.info-card{
+
+padding:18px;
+
+border-radius:16px;
+
+}
+
+.info-card h3{
+
+font-size:18px;
+
+margin-bottom:10px;
+
+}
+
+.info-card p{
+
+font-size:22px;
+
+}
+
+.progressSection{
+
+padding:15px;
+
+}
+
+.progressText{
+
+font-size:14px;
+
+}
+
+.progressBar{
+
+height:14px;
+
+}
+
+#map{
+
+height:340px;
+
+margin:15px;
+
+border-radius:16px;
+
+}
+
+.bottom{
+
+grid-template-columns:1fr;
+
+padding:15px;
+
+gap:18px;
+
+}
+
+.driver,
+.patient{
+
+padding:18px;
+
+border-radius:16px;
+
+}
+
+.driver h2,
+.patient h2{
+
+font-size:20px;
+
+margin-bottom:15px;
+
+}
+
+.driver p,
+.patient p{
+
+font-size:15px;
+
+margin:8px 0;
+
+line-height:1.6;
+
+}
+
+.statusBadge{
+
+display:inline-block;
+
+margin-top:8px;
+
+font-size:14px;
+
+padding:8px 14px;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+padding:15px;
+
+gap:12px;
+
+}
+
+.buttons button{
+
+width:100%;
+
+font-size:16px;
+
+padding:15px;
+
+border-radius:12px;
+
+}
+
+/* ==========================
+PATIENT PAGE
+========================== */
+
+.patient-form{
+
+grid-template-columns:1fr;
+
+gap:15px;
+
+}
+
+.patient-form button{
+
+width:100%;
+
+font-size:16px;
+
+}
+
+/* ==========================
+BILLING PAGE
+========================== */
+
+.billing-form{
+
+grid-template-columns:1fr;
+
+margin:15px;
+
+}
+
+.billing-form input,
+.billing-form select{
+
+width:100%;
+
+}
+
+.billing-form .buttons{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+.billing-form button{
+
+width:100%;
+
+}
+
+/* ==========================
+HISTORY FILTERS
+========================== */
+
+.filters{
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.filters input,
+.filters select{
+
+width:100%;
+
+}
+
+/* ==========================
+TABLES
+========================== */
+
+table{
+
+display:block;
+
+overflow-x:auto;
+
+white-space:nowrap;
+
+border-radius:14px;
+
+}
+
+table::-webkit-scrollbar{
+
+height:8px;
+
+}
+
+table::-webkit-scrollbar-thumb{
+
+background:#d62828;
+
+border-radius:20px;
+
+}
+
+th{
+
+font-size:14px;
+
+padding:12px;
+
+}
+
+td{
+
+font-size:14px;
+
+padding:12px;
+
+}
+
+.modal-content{
+
+width:95%;
+
+margin:30px auto;
+
+padding:18px;
+
+}
+
+#closeModal{
+
+font-size:32px;
+
+}
+/* ===========================================
+   MOBILE AI ASSISTANT
+=========================================== */
+
+@media (max-width:768px){
+
+#openAssistant{
+
+width:60px;
+height:60px;
+
+bottom:18px;
+right:18px;
+
+font-size:26px;
+
+}
+
+#hospitalAssistant{
+
+left:12px;
+right:12px;
+
+width:auto;
+
+height:78vh;
+
+bottom:90px;
+
+border-radius:18px;
+
+}
+
+.assistantHeader{
+
+padding:14px;
+
+font-size:17px;
+
+}
+
+#hospitalChatMessages{
+
+padding:12px;
+
+font-size:14px;
+
+}
+
+.user,
+.bot{
+
+margin-left:0;
+margin-right:0;
+
+font-size:14px;
+
+padding:10px;
+
+}
+
+.quickButtons{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:8px;
+
+}
+
+.quickButtons button{
+
+width:100%;
+
+padding:10px;
+
+font-size:13px;
+
+}
+
+.assistantFooter{
+
+padding:10px;
+
+}
+
+#hospitalChatInput{
+
+font-size:14px;
+
+padding:10px;
+
+}
+
+#hospitalSendBtn{
+
+padding:10px 16px;
+
+font-size:14px;
+
+}
+
+}
+/* ==========================================
+   PROFESSIONAL MOBILE TABLES
+========================================== */
+
+@media (max-width:768px){
+
+table{
+
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+
+border-radius:16px;
+
+background:white;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+table::-webkit-scrollbar{
+
+height:8px;
+
+}
+
+table::-webkit-scrollbar-thumb{
+
+background:#d62828;
+
+border-radius:20px;
+
+}
+
+th{
+
+padding:14px;
+
+font-size:14px;
+
+}
+
+td{
+
+padding:14px;
+
+font-size:14px;
+
+}
+
+}
+/* ==========================================
+   PROFESSIONAL MOBILE FORMS
+========================================== */
+
+@media (max-width:768px){
+
+.patient-form,
+.billing-form{
+
+display:grid;
+
+grid-template-columns:1fr;
+
+gap:15px;
+
+}
+
+.patient-form input,
+.patient-form select,
+.billing-form input,
+.billing-form select{
+
+width:100%;
+
+padding:14px;
+
+font-size:16px;
+
+border-radius:12px;
+
+}
+
+.patient-form button,
+.billing-form button{
+
+width:100%;
+
+padding:15px;
+
+font-size:16px;
+
+border-radius:12px;
+
+}
+
+#search,
+#searchInput{
+
+width:100%;
+
+padding:14px;
+
+font-size:16px;
+
+margin-bottom:15px;
+
+}
+
+}
+/* ==========================================
+   EMERGENCY CARD UPGRADE
+========================================== */
+
+@media (max-width:768px){
+
+.emergency-card{
+
+padding:20px;
+
+border-radius:18px;
+
+border-left:6px solid #d62828;
+
+}
+
+.emergency-card h3{
+
+font-size:20px;
+
+margin-bottom:15px;
+
+}
+
+.emergency-card p{
+
+line-height:1.8;
+
+font-size:15px;
+
+}
+
+.actions{
+
+display:grid;
+
+grid-template-columns:1fr;
+
+gap:10px;
+
+}
+
+.actions button{
+
+width:100%;
+
+padding:14px;
+
+font-size:15px;
+
+border-radius:10px;
+
+}
+
+}
+/* ==========================================
+   MOBILE DASHBOARD
+========================================== */
+
+@media (max-width:768px){
+
+.stats{
+
+grid-template-columns:1fr;
+
+gap:15px;
+
+}
+
+.card{
+
+padding:22px;
+
+border-radius:18px;
+
+}
+
+.card h3{
+
+font-size:34px;
+
+}
+
+.card p{
+
+font-size:17px;
+
+}
+
+.panel{
+
+padding:18px;
+
+}
+
+.dashboard-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

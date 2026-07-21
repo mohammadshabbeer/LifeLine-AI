@@ -1,0 +1,301 @@
+.toolbar{
+
+display:flex;
+
+gap:15px;
+
+margin:25px 0;
+
+}
+
+.toolbar button{
+
+padding:12px 22px;
+
+background:#d62828;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.toolbar button:hover{
+
+background:#b71c1c;
+
+}
+
+.counter{
+
+font-size:18px;
+
+font-weight:bold;
+
+color:#d62828;
+
+}
+
+#emergencyContainer{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+
+gap:25px;
+
+margin-top:25px;
+
+}
+
+.emergency-card{
+
+background:white;
+
+padding:22px;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+border-left:8px solid #d62828;
+
+animation:fade .4s ease;
+
+}
+
+.emergency-card h3{
+
+margin-bottom:15px;
+
+color:#d62828;
+
+}
+
+.emergency-card p{
+
+margin:8px 0;
+
+}
+
+.actions{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+margin-top:20px;
+
+}
+
+.actions button{
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+color:white;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+.accept{
+
+background:#2ecc71;
+
+}
+
+.reject{
+
+background:#e63946;
+
+}
+
+.dispatch{
+
+background:#3498db;
+
+}
+
+.complete{
+
+background:#f39c12;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+.delete{
+
+background:#dc3545;
+
+color:white;
+
+}
+
+.delete:hover{
+
+background:#b71c1c;
+
+}
+.assign{
+
+background:#6f42c1;
+
+color:white;
+
+}
+
+.assign:hover{
+
+background:#5a32a3;
+
+}
+/* Add this content at the END of css/hospital.css or css/sidebar.css */
+
+.hospital-session-badge {
+    margin: 12px 14px 20px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: inherit;
+}
+
+.hospital-session-badge small,
+.hospital-session-badge strong {
+    display: block;
+}
+
+.hospital-session-badge small {
+    margin-bottom: 4px;
+    opacity: 0.72;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.hospital-session-badge strong {
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.sidebar-logout-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 10px;
+    background: #b71c1c;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+
+.sidebar-logout-button:hover {
+    background: #8f1111;
+}
+
+.hospital-panel-subtitle {
+    margin: 5px 0 0;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.hospital-empty-state {
+    grid-column: 1 / -1;
+    padding: 54px 24px;
+    border: 1px dashed #cfd7e6;
+    border-radius: 18px;
+    text-align: center;
+    background: #fff;
+}
+
+.hospital-empty-icon {
+    margin-bottom: 10px;
+    font-size: 48px;
+}
+
+.hospital-empty-state h2 {
+    margin: 0 0 8px;
+}
+
+.hospital-empty-state p {
+    margin: 0;
+    color: #6b7280;
+}
+
+.error-state {
+    border-color: #f2a3aa;
+    background: #fff5f5;
+}
+
+.dashboard-empty-state {
+    padding: 22px;
+    color: #6b7280;
+    text-align: center;
+}
+
+html[data-theme="dark"] .hospital-empty-state {
+    background: #151f30;
+    border-color: #344158;
+}
+
+html[data-theme="dark"] .hospital-panel-subtitle,
+html[data-theme="dark"] .hospital-empty-state p,
+html[data-theme="dark"] .dashboard-empty-state {
+    color: #aab4c4;
+}
+
+/* Multi-hospital session additions */
+.hospital-logout-btn {
+    background: #374151 !important;
+}
+
+.hospital-logout-btn:hover {
+    background: #111827 !important;
+}
+
+.hospital-empty-state {
+    grid-column: 1 / -1;
+    background: var(--card-bg, #ffffff);
+    padding: 32px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+(function () {
+    const savedTheme =
+        localStorage.getItem("lifeline-theme");
+
+    const prefersDark =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+    const theme =
+        savedTheme ||
+        (prefersDark ? "dark" : "light");
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+})();
+</script>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Billing Management | LifeLine AI</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link rel="stylesheet"
+href="css/sidebar.css">
+
+<link rel="stylesheet"
+href="css/topbar.css">
+
+<link rel="stylesheet"
+href="css/billing.css">
+
+    <link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/professional-ui.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>🚑 LifeLine AI</h2>
+
+<ul>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="hospital.html">Emergency</a></li>
+
+<li><a href="patients.html">Patients</a></li>
+
+<li><a class="active" href="billing.html">Billing</a></li>
+
+<li><a href="history.html">History</a></li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<h2>Billing Management</h2>
+<button
+    type="button"
+    class="theme-toggle"
+    data-theme-toggle
+>
+    <span class="theme-toggle-icon">
+        🌙
+    </span>
+
+    <span class="theme-toggle-text">
+        Dark Mode
+    </span>
+</button>
+</div>
+
+<div class="billing-form">
+
+<select id="patientSelect">
+
+<option value="">Select Patient</option>
+
+</select>
+
+<input
+id="doctor"
+placeholder="Doctor"
+readonly>
+
+<input
+id="disease"
+placeholder="Disease"
+readonly>
+
+<input
+id="consultation"
+type="number"
+placeholder="Consultation Charges">
+
+<input
+id="medicine"
+type="number"
+placeholder="Medicine Charges">
+
+<input
+id="room"
+type="number"
+placeholder="Room Charges">
+
+<input
+id="lab"
+type="number"
+placeholder="Lab Charges">
+
+<input
+id="other"
+type="number"
+placeholder="Other Charges">
+
+<input
+id="grandTotal"
+placeholder="Grand Total"
+readonly>
+
+<select id="paymentStatus">
+
+<option>Unpaid</option>
+
+<option>Paid</option>
+
+</select>
+
+<div class="buttons">
+
+<button id="generateBill">
+
+Generate Bill
+
+</button>
+
+<button onclick="window.print()">
+
+Print Bill
+
+</button>
+
+<button id="clearBill">
+
+Clear
+
+</button>
+
+</div>
+
+</div>
+
+<h2>
+
+Generated Bills
+
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Patient</th>
+
+<th>Total</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="billTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script
+type="module"
+src="js/modules/billing.js"></script>
+<link rel="stylesheet" href="css/hospital-assistant.css">
+
+<button id="openAssistant">🤖</button>
+
+<div id="hospitalAssistant">
+
+    <div class="assistantHeader">
+
+        🤖 LifeLine AI Assistant
+
+        <button id="closeAssistant">×</button>
+
+    </div>
+
+    <div class="quickButtons">
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Dashboard'">Dashboard</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Patients'">Patients</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Billing'">Billing</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open History'">History</button>
+
+    </div>
+
+    <div id="hospitalChatMessages">
+
+        <div class="bot">
+
+            👋 Welcome to LifeLine AI Assistant.
+
+        </div>
+
+    </div>
+
+    <div class="assistantFooter">
+
+        <input
+        id="hospitalChatInput"
+        placeholder="Ask anything...">
+
+        <button id="hospitalSendBtn">
+
+            Send
+
+        </button>
+
+    </div>
+
+</div>
+
+<script type="module" src="ai/hospital-assistant.js"></script>
+<script type="module" src="js/modules/theme.js"></script>
+<script type="module" src="js/modules/hospital-guard.js"></script>
+<script type="module" src="js/modules/toast.js"></script>
+</body>
+
+</html>

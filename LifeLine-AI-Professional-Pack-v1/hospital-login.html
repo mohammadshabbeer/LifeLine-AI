@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("lifeline-theme");
+            const prefersDark = window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.setAttribute(
+                "data-theme",
+                savedTheme || (prefersDark ? "dark" : "light")
+            );
+        })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLine AI | Hospital Login</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/hospital-login.css">
+<link rel="stylesheet" href="css/professional-ui.css">
+</head>
+<body>
+    <main class="hospital-login-page">
+        <section class="login-brand-panel">
+            <div class="brand-content">
+                <div class="brand-logo">🚑</div>
+                <p class="brand-label">LifeLine AI</p>
+                <h1>Multi-Hospital Emergency Response System</h1>
+                <p class="brand-description">
+                    Securely access your hospital's emergency dashboard,
+                    view only your assigned emergencies, and coordinate ambulance response.
+                </p>
+
+                <div class="feature-list">
+                    <div><i class="fa-solid fa-bell"></i> Real-time emergency alerts</div>
+                    <div><i class="fa-solid fa-hospital"></i> Hospital-specific dashboard</div>
+                    <div><i class="fa-solid fa-truck-medical"></i> Driver assignment and tracking</div>
+                    <div><i class="fa-solid fa-shield-heart"></i> Independent hospital sessions</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-form-panel">
+            <div class="login-card">
+                <div class="login-heading">
+                    <div class="login-icon"><i class="fa-solid fa-hospital-user"></i></div>
+                    <div>
+                        <p class="eyebrow">AUTHORIZED ACCESS</p>
+                        <h2>Hospital Login</h2>
+                        <p>Use the common demo username and your hospital password.</p>
+                    </div>
+                </div>
+
+                <form id="hospitalLoginForm" novalidate>
+                    <div class="form-group">
+                        <label for="hospitalUsername">Username</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user-shield"></i>
+                            <input
+                                id="hospitalUsername"
+                                type="text"
+                                value="admin"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hospitalPassword">Hospital Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input
+                                id="hospitalPassword"
+                                type="password"
+                                inputmode="numeric"
+                                maxlength="4"
+                                placeholder="Enter 4-digit password"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button
+                                type="button"
+                                id="toggleHospitalPassword"
+                                class="password-toggle"
+                                aria-label="Show or hide password"
+                            >
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="loginError" class="login-error" role="alert"></div>
+
+                    <button id="hospitalLoginButton" type="submit" class="login-button">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Login to Hospital
+                    </button>
+                </form>
+
+                <div class="demo-credentials">
+                    <h3><i class="fa-solid fa-flask"></i> Demo Credentials</h3>
+                    <p>Username for every hospital: <strong>admin</strong></p>
+                    <div class="credential-grid">
+                        <span>Apollo Hospital</span><strong>1111</strong>
+                        <span>Care Hospital</span><strong>2222</strong>
+                        <span>Yashoda Hospital</span><strong>3333</strong>
+                        <span>City Hospital</span><strong>4444</strong>
+                    </div>
+                </div>
+
+                <p class="demo-warning">
+                    <i class="fa-solid fa-circle-info"></i>
+                    These client-side passwords are for project demonstration only.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/modules/hospital-login.js"></script>
+<script type="module" src="js/modules/toast.js"></script>
+</body>
+</html>

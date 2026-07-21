@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LifeLine Driver Portal</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/topbar.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/driver.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h1>🚑 LifeLine AI</h1>
+
+<ul>
+
+<li><a href="#" class="active">Driver Dashboard</a></li>
+
+<li><a href="#">Emergency Requests</a></li>
+
+<li><a href="#">Completed Trips</a></li>
+
+<li><a href="#">Driver Profile</a></li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<h2>🚑 Ambulance Driver Dashboard</h2>
+
+<div id="clock"></div>
+
+</div>
+
+<div class="driverStatus">
+
+<h3>
+
+Driver Status
+
+<span class="available">
+
+Available
+
+</span>
+
+</h3>
+
+</div>
+
+<div id="driverEmergencyContainer">
+
+<h2>
+
+Waiting for Emergency...
+
+</h2>
+
+</div>
+
+</div>
+
+<audio id="driverAlarm">
+    <source src="assets/sounds/alert.mp3" type="audio/mpeg">
+</audio>
+
+<script type="module" src="js/modules/driver.js"></script>
+
+</body>
+
+</html>

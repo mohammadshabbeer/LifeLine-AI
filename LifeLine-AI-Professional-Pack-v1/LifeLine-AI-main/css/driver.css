@@ -1,0 +1,212 @@
+/* ===============================
+   LifeLine Driver Portal
+================================ */
+
+body{
+    background:#eef4fb;
+}
+
+.driverStatus{
+
+    background:white;
+    padding:18px;
+    border-radius:18px;
+    margin:25px 0;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.driverStatus h3{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:0;
+
+}
+
+.available{
+
+    background:#28a745;
+    color:white;
+    padding:8px 18px;
+    border-radius:25px;
+    font-size:14px;
+
+}
+
+.busy{
+
+    background:#d62828;
+    color:white;
+    padding:8px 18px;
+    border-radius:25px;
+}
+
+#driverEmergencyContainer{
+
+    display:grid;
+    gap:20px;
+
+}
+
+.driver-card{
+
+    background:white;
+    border-left:8px solid #d62828;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,.10);
+
+    animation:fade .35s;
+
+}
+
+.driver-card h2{
+
+    color:#d62828;
+    margin-bottom:18px;
+
+}
+
+.driver-card p{
+
+    margin:10px 0;
+    font-size:16px;
+
+}
+
+.driver-actions{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:20px;
+
+}
+
+.driver-actions button{
+
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+
+}
+
+.driver-actions button:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.acceptBtn{
+
+    background:#28a745;
+
+}
+
+.rejectBtn{
+
+    background:#d62828;
+
+}
+
+.callBtn{
+
+    background:#0B5ED7;
+
+}
+
+.mapBtn{
+
+    background:#6f42c1;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+/* ===============================
+   Mobile Driver App
+================================ */
+
+@media (max-width:768px){
+
+.sidebar{
+
+display:none;
+
+}
+
+.main{
+
+margin:0;
+width:100%;
+padding:15px;
+
+}
+
+.topbar{
+
+flex-direction:column;
+gap:12px;
+text-align:center;
+
+}
+
+.driverStatus{
+
+padding:15px;
+
+}
+
+.driver-card{
+
+padding:18px;
+
+}
+
+.driver-card h2{
+
+font-size:22px;
+
+}
+
+.driver-card p{
+
+font-size:15px;
+
+}
+
+.driver-actions{
+
+grid-template-columns:1fr;
+
+}
+
+.driver-actions button{
+
+font-size:18px;
+padding:18px;
+
+}
+
+}

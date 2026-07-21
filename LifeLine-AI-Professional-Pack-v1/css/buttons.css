@@ -1,0 +1,39 @@
+.btn{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.btn-primary{
+
+    background:linear-gradient(90deg,#d62828,#ff4d4d);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-success{
+
+    background:#2ecc71;
+
+}
+
+.btn-danger{
+
+    background:#e63946;
+
+}

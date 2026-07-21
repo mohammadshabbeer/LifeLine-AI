@@ -1,0 +1,392 @@
+/* ==========================
+   Floating AI Button
+========================== */
+
+#chatbotBtn{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:75px;
+
+height:75px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#0B5ED7,#2563EB);
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:34px;
+
+cursor:pointer;
+
+box-shadow:0 15px 35px rgba(0,0,0,.30);
+
+z-index:9999;
+
+transition:.3s;
+
+animation:pulse 2s infinite;
+
+}
+
+#chatbotBtn:hover{
+
+transform:scale(1.08);
+
+}
+
+@keyframes pulse{
+
+0%{
+
+box-shadow:0 0 0 0 rgba(37,99,235,.5);
+
+}
+
+70%{
+
+box-shadow:0 0 0 20px rgba(37,99,235,0);
+
+}
+
+100%{
+
+box-shadow:0 0 0 0 rgba(37,99,235,0);
+
+}
+
+}
+
+
+/* ==========================
+   Main Chat Window
+========================== */
+
+#chatbot{
+
+position:fixed;
+
+top:20px;
+
+right:-650px;
+
+width:520px;
+
+height:calc(100vh - 40px);
+
+background:white;
+
+border-radius:25px 0 0 25px;
+
+display:flex;
+
+flex-direction:column;
+
+transition:.35s;
+
+overflow:hidden;
+
+box-shadow:-15px 0 45px rgba(0,0,0,.25);
+
+z-index:9999;
+
+}
+
+#chatbot.show{
+
+right:0;
+
+}
+
+
+/* ==========================
+   Header
+========================== */
+
+.chat-header{
+
+padding:22px;
+
+background:linear-gradient(135deg,#0B5ED7,#2563EB);
+
+color:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.chat-header h3{
+
+margin:0;
+
+font-size:22px;
+
+}
+
+.chat-header button{
+
+background:none;
+
+border:none;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+}
+
+
+/* ==========================
+   Messages
+========================== */
+
+#chatMessages{
+
+flex:1;
+
+padding:25px;
+
+overflow-y:auto;
+
+background:#F4F8FC;
+
+}
+
+
+/* Scrollbar */
+
+#chatMessages::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+#chatMessages::-webkit-scrollbar-thumb{
+
+background:#b5c8f3;
+
+border-radius:20px;
+
+}
+
+
+/* Bot */
+
+.bot{
+
+max-width:90%;
+
+background:white;
+
+padding:16px;
+
+border-radius:18px;
+
+margin-bottom:18px;
+
+box-shadow:0 5px 12px rgba(0,0,0,.08);
+
+line-height:1.7;
+
+font-size:15px;
+
+}
+
+
+/* User */
+
+.user{
+
+max-width:90%;
+
+margin-left:auto;
+
+background:linear-gradient(135deg,#0B5ED7,#2563EB);
+
+color:white;
+
+padding:16px;
+
+border-radius:18px;
+
+margin-bottom:18px;
+
+line-height:1.7;
+
+font-size:15px;
+
+}
+
+
+/* ==========================
+   Footer
+========================== */
+
+.chat-input{
+
+padding:20px;
+
+background:white;
+
+border-top:1px solid #E6EAF0;
+
+display:flex;
+
+gap:12px;
+
+}
+
+.chat-input input{
+
+flex:1;
+
+padding:15px;
+
+font-size:16px;
+
+border-radius:12px;
+
+border:1px solid #D8DDE6;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.chat-input input:focus{
+
+border-color:#2563EB;
+
+box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+.chat-input button{
+
+padding:15px 24px;
+
+background:#2563EB;
+
+border:none;
+
+color:white;
+
+font-size:15px;
+
+font-weight:bold;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.chat-input button:hover{
+
+background:#124EC5;
+
+}
+
+
+/* ==========================
+   Emergency Button
+========================== */
+
+#emergencyAction{
+
+padding:15px;
+
+background:white;
+
+border-top:1px solid #E6EAF0;
+
+}
+
+.danger-btn{
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+border-radius:14px;
+
+background:linear-gradient(135deg,#D62828,#B91C1C);
+
+color:white;
+
+font-size:17px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.danger-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 20px rgba(214,40,40,.35);
+
+}
+
+
+/* ==========================
+   Mobile
+========================== */
+
+@media(max-width:768px){
+
+#chatbot{
+
+width:100%;
+
+height:100%;
+
+top:0;
+
+border-radius:0;
+
+right:-100%;
+
+}
+
+#chatbot.show{
+
+right:0;
+
+}
+
+#chatbotBtn{
+
+bottom:20px;
+
+right:20px;
+
+}
+
+}

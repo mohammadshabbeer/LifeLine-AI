@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+(function () {
+    const savedTheme =
+        localStorage.getItem("lifeline-theme");
+
+    const prefersDark =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+    const theme =
+        savedTheme ||
+        (prefersDark ? "dark" : "light");
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+})();
+</script>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Patients | LifeLine AI</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link rel="stylesheet"
+href="css/sidebar.css">
+
+<link rel="stylesheet"
+href="css/topbar.css">
+
+<link rel="stylesheet"
+href="css/patients.css">
+
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/professional-ui.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h1>🚑 LifeLine AI</h1>
+
+<ul>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="hospital.html">Emergency</a></li>
+
+<li><a class="active" href="patients.html">Patients</a></li>
+
+<li><a href="billing.html">Billing</a></li>
+
+<li><a href="ambulance-map.html">Ambulance</a></li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<h2>Patient Management</h2>
+
+<div id="clock"></div>
+
+</div>
+
+<div class="patient-form">
+
+<input id="patientName" placeholder="Patient Name">
+
+<input id="age" placeholder="Age">
+
+<select id="gender">
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+<input id="phone" placeholder="Phone">
+
+<input id="address" placeholder="Address">
+
+<input id="disease" placeholder="Disease">
+
+<input id="doctor" placeholder="Doctor Assigned">
+
+<input id="admissionDate" type="date">
+
+<button id="savePatient">
+
+Save Patient
+
+</button>
+
+</div>
+
+<br>
+
+<input
+
+id="search"
+
+placeholder="Search Patient">
+
+<br><br>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Age</th>
+
+<th>Gender</th>
+
+<th>Phone</th>
+
+<th>Disease</th>
+
+<th>Doctor</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="patientTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script
+type="module"
+src="js/modules/patients.js">
+
+</script>
+<link rel="stylesheet" href="css/hospital-assistant.css">
+
+<button id="openAssistant">🤖</button>
+
+<div id="hospitalAssistant">
+
+    <div class="assistantHeader">
+
+        🤖 LifeLine AI Assistant
+
+        <button id="closeAssistant">×</button>
+
+    </div>
+
+    <div class="quickButtons">
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Dashboard'">Dashboard</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Patients'">Patients</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Billing'">Billing</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open History'">History</button>
+
+    </div>
+
+    <div id="hospitalChatMessages">
+
+        <div class="bot">
+
+            👋 Welcome to LifeLine AI Assistant.
+
+        </div>
+
+    </div>
+
+    <div class="assistantFooter">
+
+        <input
+        id="hospitalChatInput"
+        placeholder="Ask anything...">
+
+        <button id="hospitalSendBtn">
+
+            Send
+
+        </button>
+
+    </div>
+
+</div>
+
+<script type="module" src="ai/hospital-assistant.js"></script>
+<script type="module" src="js/modules/hospital-guard.js"></script>
+<script type="module" src="js/modules/toast.js"></script>
+</body>
+
+</html>

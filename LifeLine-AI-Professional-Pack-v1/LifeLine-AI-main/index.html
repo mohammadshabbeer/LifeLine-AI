@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>LifeLine AI | Emergency Response</title>
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Leaflet -->
+
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/emergency.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+
+            🚑 LifeLine AI
+
+        </div>
+
+        <div>
+
+            <a href="login.html" class="login-btn">
+
+                Hospital Login
+
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <h1>
+
+        AI Powered Emergency Response System
+
+    </h1>
+
+    <p>
+
+        Saving Lives Faster with Artificial Intelligence
+
+    </p>
+
+</section>
+
+<section class="container">
+
+<div class="left">
+
+<h2>
+
+Emergency Request
+
+</h2>
+
+<form id="emergencyForm">
+
+<input
+type="text"
+id="name"
+placeholder="Patient Name"
+required>
+
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number"
+required>
+
+<select id="emergencyType">
+
+<option>Road Accident</option>
+
+<option>Heart Attack</option>
+
+<option>Stroke</option>
+
+<option>Pregnancy</option>
+
+<option>Fire Injury</option>
+
+<option>Other</option>
+
+</select>
+
+<textarea
+id="symptoms"
+placeholder="Describe Symptoms"
+rows="4"></textarea>
+
+<input
+type="text"
+id="location"
+placeholder="Current Location"
+readonly>
+
+<select id="hospital">
+
+<option>City Hospital</option>
+
+<option>Apollo Hospital</option>
+
+<option>Government Hospital</option>
+
+<option>Life Care Hospital</option>
+
+</select>
+
+<div class="buttons">
+
+<button
+type="button"
+id="gpsBtn">
+
+📍 Detect Location
+
+</button>
+
+<button
+type="submit">
+
+🚨 Send Emergency
+
+</button>
+
+</div>
+
+</form>
+<div id="statusCard" class="statusCard">
+
+<h2>🚑 Live Emergency Status</h2>
+
+<p id="liveStatus">
+
+Waiting for emergency...
+
+</p>
+
+<div class="tracker">
+
+<div class="step active" id="stepPending">
+
+<div class="circle">1</div>
+
+<p>Request Sent</p>
+
+</div>
+
+<div class="line" id="line1"></div>
+
+<div class="step" id="stepAccepted">
+
+<div class="circle">2</div>
+
+<p>Accepted</p>
+
+</div>
+
+<div class="line" id="line2"></div>
+
+<div class="step" id="stepDispatch">
+
+<div class="circle">3</div>
+
+<p>Dispatched</p>
+
+</div>
+
+<div class="line" id="line3"></div>
+
+<div class="step" id="stepArrived">
+
+<div class="circle">4</div>
+
+<p>Arrived</p>
+
+</div>
+
+<div class="line" id="line4"></div>
+
+<div class="step" id="stepCompleted">
+
+<div class="circle">5</div>
+
+<p>Completed</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="right">
+
+<div id="map"></div>
+
+</div>
+
+</section>
+
+<!-- Leaflet -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script
+type="module"
+src="js/modules/emergency.js"></script>
+
+<!-- ===========================
+     AI CHATBOT
+=========================== -->
+
+<div id="chatbotBtn">
+
+    🤖
+
+</div>
+
+<div id="chatbot">
+
+    <div class="chat-header">
+
+        <h3>LifeLine AI Assistant</h3>
+
+        <button id="closeChat">✖</button>
+
+    </div>
+
+    <div id="chatMessages">
+
+        <div class="bot">
+
+            👋 Hello!
+
+            I'm your AI Emergency Assistant.
+
+            Describe your medical situation in simple language.
+
+        </div>
+
+    </div>
+
+    <div class="chat-input">
+
+        <input
+            type="text"
+            id="userInput"
+            placeholder="Describe your emergency...">
+
+        <button id="sendBtn">
+
+            Send
+
+        </button><div id="emergencyAction" style="display:none; padding:10px; text-align:center;">
+    <button id="sendEmergencyBtn" class="danger-btn">
+        🚑 Send Emergency Request
+    </button>
+</div>
+
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="css/chatbot.css">
+
+<script type="module" src="js/modules/chatbot.js"></script>
+</body>
+
+</html>

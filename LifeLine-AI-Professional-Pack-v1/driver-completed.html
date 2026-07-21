@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+(function () {
+    const savedTheme =
+        localStorage.getItem("lifeline-theme");
+
+    const prefersDark =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+    const theme =
+        savedTheme ||
+        (prefersDark ? "dark" : "light");
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+})();
+</script>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Completed Trips | LifeLine Driver Portal</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/topbar.css">
+    <link rel="stylesheet" href="css/driver.css">
+    <link rel="stylesheet" href="css/driver-completed.css">
+    <link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/professional-ui.css">
+</head>
+
+<body>
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<div class="sidebar">
+
+    <h1>🚑 LifeLine AI</h1>
+
+    <ul>
+
+        <li>
+            <a href="driver.html">
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+                Driver Dashboard
+
+            </a>
+        </li>
+
+        <li>
+            <a href="driver-requests.html">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+                Emergency Requests
+
+            </a>
+        </li>
+
+        <li>
+            <a
+                href="driver-completed.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Completed Trips
+
+            </a>
+        </li>
+
+        <li>
+            <a href="driver-profile.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                Driver Profile
+
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>✅ Completed Trips</h2>
+
+            <p>
+                View your successfully completed emergency trips.
+            </p>
+<button
+    type="button"
+    class="theme-toggle"
+    data-theme-toggle
+>
+    <span class="theme-toggle-icon">
+        🌙
+    </span>
+
+    <span class="theme-toggle-text">
+        Dark Mode
+    </span>
+</button>
+        </div>
+        <div id="clock"></div>
+<div id="driverSwitcher"></div>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="completed-stats">
+
+        <div class="completed-stat-card">
+
+            <div class="stat-icon">
+                🚑
+            </div>
+
+            <div>
+
+                <p>Total Completed Trips</p>
+
+                <h2 id="completedTripCount">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="completed-stat-card">
+
+            <div class="stat-icon">
+                📅
+            </div>
+
+            <div>
+
+                <p>Trips Completed Today</p>
+
+                <h2 id="todayTripCount">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="completed-stat-card">
+
+            <div class="stat-icon">
+                ⭐
+            </div>
+
+            <div>
+
+                <p>Completion Rate</p>
+
+                <h2 id="completionRate">
+                    100%
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Completed Trips Heading -->
+
+    <div class="completed-heading">
+
+        <div>
+
+            <h2>Trip History</h2>
+
+            <p>
+                Completed emergencies will appear automatically.
+            </p>
+
+        </div>
+
+        <div class="completed-status">
+
+            <span></span>
+
+            Live Firestore Data
+
+        </div>
+
+    </div>
+
+    <!-- Completed Trips Container -->
+
+    <div id="completedTripsContainer">
+
+        <div class="completed-empty">
+
+            <div class="completed-empty-icon">
+                🚑
+            </div>
+
+            <h2>Loading Completed Trips...</h2>
+
+            <p>
+                Please wait while trip history is retrieved.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script
+    type="module"
+    src="js/modules/driver-completed.js"
+></script>
+<script type="module" src="js/modules/theme.js"></script>
+<script
+    type="module"
+    src="js/modules/driver-switcher.js">
+</script>
+<script type="module" src="js/modules/toast.js"></script>
+</body>
+
+</html>

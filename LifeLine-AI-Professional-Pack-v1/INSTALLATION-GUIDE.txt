@@ -1,0 +1,66 @@
+LIFELINE AI — PROFESSIONAL UI PACK V1
+=====================================
+
+FEATURES ADDED
+--------------
+1. Animated LifeLine AI splash screen on index.html.
+2. Professional toast notifications on operational pages.
+3. Real-time hospital notification center on hospital.html and dashboard.html.
+
+IMPORTANT
+---------
+This folder is based on your already-corrected multi-hospital project.
+No Firestore collection names, emergency workflow, driver workflow, hospital
+session logic, patient logic, billing logic, or ambulance logic were removed.
+
+SAFEST INSTALLATION METHOD
+--------------------------
+1. Keep a backup of your existing project folder.
+2. Extract LifeLine-AI-Professional-Pack-v1.zip.
+3. Open the extracted folder using VS Code.
+4. Run index.html using Live Server.
+5. Test the public portal and hospital login before replacing your old folder.
+6. When everything is confirmed, use the new folder as your main project.
+
+MANUAL INSTALLATION METHOD
+--------------------------
+Copy these NEW files into your current project:
+
+css/professional-ui.css
+js/modules/toast.js
+js/modules/splash.js
+js/modules/notification-center.js
+
+The HTML files in this pack already contain the correct CSS and script tags.
+For the lowest risk, replace the HTML files with the versions in this pack only
+when your existing project is the same corrected multi-hospital version.
+
+HOW TO TEST
+-----------
+A. Splash screen
+   1. Open index.html with Live Server.
+   2. The splash appears once per browser tab/session.
+   3. To test it again, close the tab and open a new tab, or run:
+      sessionStorage.removeItem('lifeline-splash-shown')
+
+B. Toast notifications
+   1. Submit an emergency.
+   2. The old alert message now appears as a modern toast.
+   3. Existing JavaScript alert() calls still execute safely through the toast layer.
+
+C. Notification center
+   1. Open hospital.html and log in.
+   2. A bell appears at the top-right.
+   3. Submit an emergency for that logged-in hospital.
+   4. The badge and notification list update in real time.
+   5. Notifications are isolated by hospital and saved in localStorage.
+
+ROLLBACK
+--------
+Remove the new CSS/script tags from HTML and delete these four new files:
+css/professional-ui.css
+js/modules/toast.js
+js/modules/splash.js
+js/modules/notification-center.js
+
+Your original functionality will then remain unchanged.

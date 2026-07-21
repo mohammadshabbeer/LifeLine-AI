@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+(function () {
+    const savedTheme =
+        localStorage.getItem("lifeline-theme");
+
+    const prefersDark =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+    const theme =
+        savedTheme ||
+        (prefersDark ? "dark" : "light");
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+})();
+</script>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Driver Profile | LifeLine AI</title>
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- Existing Project CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/topbar.css">
+    <link rel="stylesheet" href="css/driver.css">
+    <link rel="stylesheet" href="css/mobile.css">
+
+    <!-- Driver Profile CSS -->
+
+    <link rel="stylesheet" href="css/driver-profile.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/professional-ui.css">
+</head>
+
+<body>
+
+<!-- ==========================================
+     SIDEBAR
+========================================== -->
+
+<div class="sidebar">
+
+    <h1>🚑 LifeLine AI</h1>
+
+    <ul>
+
+        <li>
+
+            <a href="driver.html">
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+                Driver Dashboard
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="driver-requests.html">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+                Emergency Requests
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="driver-completed.html">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Completed Trips
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a
+                href="driver-profile.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-user"></i>
+
+                Driver Profile
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ==========================================
+     MAIN CONTENT
+========================================== -->
+
+<div class="main">
+
+    <!-- Topbar -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>👤 Driver Profile</h2>
+
+            <p>
+                View and manage your personal and ambulance information.
+            </p>
+<button
+    type="button"
+    class="theme-toggle"
+    data-theme-toggle
+>
+    <span class="theme-toggle-icon">
+        🌙
+    </span>
+
+    <span class="theme-toggle-text">
+        Dark Mode
+    </span>
+</button>
+        </div>
+<div id="driverSwitcher"></div>
+        <div id="clock"></div>
+    </div>
+
+    <!-- ==========================================
+         PROFILE HEADER
+    ========================================== -->
+
+    <section class="profile-hero">
+
+        <div class="profile-hero-background"></div>
+
+        <div class="profile-hero-content">
+
+            <div class="profile-avatar-wrapper">
+
+                <div class="profile-avatar">
+
+                    <img
+                        id="driverProfileImage"
+                        src="assets/images/driver-avatar.png"
+                        alt="Driver Profile"
+                        onerror="this.style.display='none'; document.getElementById('profileAvatarFallback').style.display='flex';"
+                    >
+
+                    <div
+                        id="profileAvatarFallback"
+                        class="profile-avatar-fallback"
+                    >
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                </div>
+
+                <span
+                    id="profileOnlineIndicator"
+                    class="profile-online-indicator"
+                ></span>
+
+            </div>
+
+            <div class="profile-main-info">
+
+                <div class="profile-name-row">
+
+                    <h1 id="profileDriverName">
+
+                        Loading Driver...
+
+                    </h1>
+
+                    <span
+                        id="profileStatusBadge"
+                        class="profile-status-badge available"
+                    >
+
+                        Available
+
+                    </span>
+
+                </div>
+
+                <p class="profile-role">
+
+                    <i class="fa-solid fa-truck-medical"></i>
+
+                    Emergency Ambulance Driver
+
+                </p>
+
+                <div class="profile-meta">
+
+                    <span>
+
+                        <i class="fa-solid fa-id-card"></i>
+
+                        Driver ID:
+
+                        <strong id="profileDriverId">
+                            driver1
+                        </strong>
+
+                    </span>
+
+                    <span>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <strong id="profileLocation">
+                            Location not available
+                        </strong>
+
+                    </span>
+
+                    <span>
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                        Joined:
+
+                        <strong id="profileJoinedDate">
+                            Not available
+                        </strong>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="profile-header-actions">
+
+                <button
+                    type="button"
+                    id="editProfileButton"
+                    class="profile-primary-button"
+                >
+
+                    <i class="fa-solid fa-pen-to-square"></i>
+
+                    Edit Profile
+
+                </button>
+
+                <button
+                    type="button"
+                    id="refreshProfileButton"
+                    class="profile-secondary-button"
+                >
+
+                    <i class="fa-solid fa-rotate"></i>
+
+                    Refresh
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+         PERFORMANCE STATISTICS
+    ========================================== -->
+
+    <section class="profile-statistics-grid">
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon blue">
+
+                <i class="fa-solid fa-route"></i>
+
+            </div>
+
+            <div class="profile-stat-content">
+
+                <p>Total Assigned Trips</p>
+
+                <h2 id="profileTotalTrips">
+                    0
+                </h2>
+
+                <span>
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Lifetime assignments
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon green">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div class="profile-stat-content">
+
+                <p>Completed Trips</p>
+
+                <h2 id="profileCompletedTrips">
+                    0
+                </h2>
+
+                <span>
+
+                    <i class="fa-solid fa-shield-heart"></i>
+
+                    Successful emergencies
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon orange">
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+            <div class="profile-stat-content">
+
+                <p>Active Trips</p>
+
+                <h2 id="profileActiveTrips">
+                    0
+                </h2>
+
+                <span>
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                    Currently in progress
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="profile-stat-card">
+
+            <div class="profile-stat-icon purple">
+
+                <i class="fa-solid fa-percent"></i>
+
+            </div>
+
+            <div class="profile-stat-content">
+
+                <p>Success Rate</p>
+
+                <h2 id="profileSuccessRate">
+                    0%
+                </h2>
+
+                <span>
+
+                    <i class="fa-solid fa-star"></i>
+
+                    Driver performance
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+         PROFILE CONTENT GRID
+    ========================================== -->
+
+    <section class="profile-content-grid">
+
+        <!-- Left Column -->
+
+        <div class="profile-left-column">
+
+            <!-- Personal Information -->
+
+            <div class="profile-section-card">
+
+                <div class="profile-section-heading">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fa-solid fa-address-card"></i>
+
+                            Personal Information
+
+                        </h2>
+
+                        <p>
+                            Basic details registered for this driver.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-details-grid">
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon">
+
+                            <i class="fa-solid fa-user"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Full Name</span>
+
+                            <strong id="profileFullName">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Phone Number</span>
+
+                            <strong id="profilePhone">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Email Address</span>
+
+                            <strong id="profileEmail">
+                                Not available
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Address</span>
+
+                            <strong id="profileAddress">
+                                Not available
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon">
+
+                            <i class="fa-solid fa-calendar"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Date of Joining</span>
+
+                            <strong id="profileJoiningDate">
+                                Not available
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon">
+
+                            <i class="fa-solid fa-briefcase"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Experience</span>
+
+                            <strong id="profileExperience">
+                                Not available
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Ambulance Information -->
+
+            <div class="profile-section-card">
+
+                <div class="profile-section-heading">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fa-solid fa-truck-medical"></i>
+
+                            Ambulance Information
+
+                        </h2>
+
+                        <p>
+                            Vehicle and license details assigned to this driver.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-details-grid">
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon ambulance">
+
+                            <i class="fa-solid fa-truck-medical"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Ambulance Number</span>
+
+                            <strong id="profileVehicleNumber">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon ambulance">
+
+                            <i class="fa-solid fa-car-side"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Vehicle Type</span>
+
+                            <strong id="profileVehicleType">
+                                Emergency Ambulance
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon ambulance">
+
+                            <i class="fa-solid fa-id-card"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>License Number</span>
+
+                            <strong id="profileLicenseNumber">
+                                Loading...
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon ambulance">
+
+                            <i class="fa-solid fa-certificate"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>License Status</span>
+
+                            <strong
+                                id="profileLicenseStatus"
+                                class="verified-text"
+                            >
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Verified
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon ambulance">
+
+                            <i class="fa-solid fa-hospital"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Assigned Hospital</span>
+
+                            <strong id="profileAssignedHospital">
+                                Not available
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-detail-item">
+
+                        <div class="profile-detail-icon ambulance">
+
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Vehicle Condition</span>
+
+                            <strong
+                                id="profileVehicleCondition"
+                                class="verified-text"
+                            >
+
+                                Ready for Service
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right Column -->
+
+        <div class="profile-right-column">
+
+            <!-- Driver Status -->
+
+            <div class="profile-section-card">
+
+                <div class="profile-section-heading">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fa-solid fa-signal"></i>
+
+                            Driver Availability
+
+                        </h2>
+
+                        <p>
+                            Control your current duty status.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-status-control">
+
+                    <label for="profileDriverStatusSelect">
+
+                        Current Status
+
+                    </label>
+
+                    <select id="profileDriverStatusSelect">
+
+                        <option value="Available">
+
+                            🟢 Available
+
+                        </option>
+
+                        <option value="Busy">
+
+                            🟠 Busy
+
+                        </option>
+
+                        <option value="Unavailable">
+
+                            🔴 Unavailable
+
+                        </option>
+
+                        <option value="Leave">
+
+                            🌴 Leave
+
+                        </option>
+
+                    </select>
+
+                    <p id="profileStatusMessage">
+
+                        Status changes will be updated in Firestore.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Performance Progress -->
+
+            <div class="profile-section-card">
+
+                <div class="profile-section-heading">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fa-solid fa-chart-simple"></i>
+
+                            Performance Summary
+
+                        </h2>
+
+                        <p>
+                            Overall emergency response performance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-progress-section">
+
+                    <div class="profile-progress-heading">
+
+                        <span>Trip Completion</span>
+
+                        <strong id="profileCompletionProgressText">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="profile-progress-bar">
+
+                        <div
+                            id="profileCompletionProgress"
+                            class="profile-progress-fill"
+                            style="width: 0%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-progress-section">
+
+                    <div class="profile-progress-heading">
+
+                        <span>Driver Reliability</span>
+
+                        <strong id="profileReliabilityText">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="profile-progress-bar">
+
+                        <div
+                            id="profileReliabilityProgress"
+                            class="profile-progress-fill reliability"
+                            style="width: 0%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-mini-stat-grid">
+
+                    <div>
+
+                        <span>Rejected Trips</span>
+
+                        <strong id="profileRejectedTrips">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>Pending Trips</span>
+
+                        <strong id="profilePendingTrips">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Achievements -->
+
+            <div class="profile-section-card">
+
+                <div class="profile-section-heading">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fa-solid fa-trophy"></i>
+
+                            Achievements
+
+                        </h2>
+
+                        <p>
+                            Driver performance milestones.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-achievement-list">
+
+                    <div class="profile-achievement-item">
+
+                        <div class="achievement-icon gold">
+
+                            <i class="fa-solid fa-medal"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>Emergency Responder</h3>
+
+                            <p>
+                                Successfully handled assigned emergencies.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-achievement-item">
+
+                        <div class="achievement-icon blue">
+
+                            <i class="fa-solid fa-truck-fast"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>Rapid Response Driver</h3>
+
+                            <p>
+                                Maintains active emergency availability.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="profile-achievement-item">
+
+                        <div class="achievement-icon green">
+
+                            <i class="fa-solid fa-shield-heart"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h3>LifeLine Guardian</h3>
+
+                            <p>
+                                Dedicated to safe patient transportation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Quick Actions -->
+
+            <div class="profile-section-card">
+
+                <div class="profile-section-heading">
+
+                    <div>
+
+                        <h2>
+
+                            <i class="fa-solid fa-bolt"></i>
+
+                            Quick Actions
+
+                        </h2>
+
+                        <p>
+                            Access important driver functions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-action-grid">
+
+                    <a
+                        href="driver-requests.html"
+                        class="profile-action-button"
+                    >
+
+                        <i class="fa-solid fa-truck-medical"></i>
+
+                        Emergency Requests
+
+                    </a>
+
+                    <a
+                        href="driver-completed.html"
+                        class="profile-action-button"
+                    >
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Completed Trips
+
+                    </a>
+
+                    <button
+                        type="button"
+                        id="profileCallHospitalButton"
+                        class="profile-action-button"
+                    >
+
+                        <i class="fa-solid fa-phone-volume"></i>
+
+                        Call Hospital
+
+                    </button>
+
+                    <button
+                        type="button"
+                        id="profileLogoutButton"
+                        class="profile-action-button danger"
+                    >
+
+                        <i class="fa-solid fa-right-from-bracket"></i>
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- ==========================================
+     EDIT PROFILE MODAL
+========================================== -->
+
+<div
+    id="editProfileModal"
+    class="profile-modal"
+>
+
+    <div class="profile-modal-overlay"></div>
+
+    <div class="profile-modal-content">
+
+        <div class="profile-modal-header">
+
+            <div>
+
+                <h2>
+
+                    <i class="fa-solid fa-user-pen"></i>
+
+                    Edit Driver Profile
+
+                </h2>
+
+                <p>
+                    Update driver details stored in Firestore.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                id="closeProfileModalButton"
+                class="profile-modal-close"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <form id="editProfileForm">
+
+            <div class="profile-form-grid">
+
+                <div class="profile-form-group">
+
+                    <label for="editDriverName">
+
+                        Full Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editDriverName"
+                        placeholder="Enter driver name"
+                        required
+                    >
+
+                </div>
+
+                <div class="profile-form-group">
+
+                    <label for="editDriverPhone">
+
+                        Phone Number
+
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="editDriverPhone"
+                        placeholder="Enter phone number"
+                        required
+                    >
+
+                </div>
+
+                <div class="profile-form-group">
+
+                    <label for="editDriverEmail">
+
+                        Email Address
+
+                    </label>
+
+                    <input
+                        type="email"
+                        id="editDriverEmail"
+                        placeholder="Enter email address"
+                    >
+
+                </div>
+
+                <div class="profile-form-group">
+
+                    <label for="editDriverAddress">
+
+                        Address
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editDriverAddress"
+                        placeholder="Enter driver address"
+                    >
+
+                </div>
+
+                <div class="profile-form-group">
+
+                    <label for="editDriverVehicle">
+
+                        Ambulance Number
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editDriverVehicle"
+                        placeholder="Enter ambulance number"
+                        required
+                    >
+
+                </div>
+
+                <div class="profile-form-group">
+
+                    <label for="editDriverLicense">
+
+                        License Number
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editDriverLicense"
+                        placeholder="Enter license number"
+                        required
+                    >
+
+                </div>
+
+                <div class="profile-form-group">
+
+                    <label for="editDriverExperience">
+
+                        Experience
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editDriverExperience"
+                        placeholder="Example: 5 Years"
+                    >
+
+                </div>
+
+                <div class="profile-form-group">
+
+                    <label for="editDriverHospital">
+
+                        Assigned Hospital
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="editDriverHospital"
+                        placeholder="Enter hospital name"
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="profile-modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelProfileEditButton"
+                    class="profile-cancel-button"
+                >
+
+                    Cancel
+
+                </button>
+
+                <button
+                    type="submit"
+                    class="profile-save-button"
+                >
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Save Changes
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     LOADING OVERLAY
+========================================== -->
+
+<div
+    id="profileLoadingOverlay"
+    class="profile-loading-overlay"
+>
+
+    <div class="profile-loader"></div>
+
+    <p>
+        Loading driver profile...
+    </p>
+
+</div>
+
+<!-- ==========================================
+     TOAST MESSAGE
+========================================== -->
+
+<div
+    id="profileToast"
+    class="profile-toast"
+>
+
+    <i
+        id="profileToastIcon"
+        class="fa-solid fa-circle-check"
+    ></i>
+
+    <span id="profileToastMessage">
+
+        Profile updated successfully.
+
+    </span>
+
+</div>
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script
+    type="module"
+    src="js/modules/driver-profile.js"
+></script>
+<script type="module" src="js/modules/theme.js"></script>
+<script
+    type="module"
+    src="js/modules/driver-switcher.js">
+</script>
+<script type="module" src="js/modules/toast.js"></script>
+</body>
+
+</html>

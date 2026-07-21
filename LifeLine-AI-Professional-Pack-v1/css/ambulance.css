@@ -1,0 +1,408 @@
+/* ===========================
+   LifeLine Ambulance Tracking
+=========================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+
+background:#eef5fb;
+
+color:#222;
+
+}
+
+/* ===========================
+Header
+=========================== */
+
+.topbar{
+
+height:70px;
+
+background:linear-gradient(90deg,#0B2545,#134074);
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 30px;
+
+color:#fff;
+
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+font-size:24px;
+
+font-weight:bold;
+
+}
+
+.live{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-weight:bold;
+
+}
+
+.pulse{
+
+width:14px;
+
+height:14px;
+
+background:#00ff44;
+
+border-radius:50%;
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+50%{
+
+transform:scale(1.6);
+
+opacity:.4;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+/* ===========================
+Dashboard Cards
+=========================== */
+
+.dashboard{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+padding:25px;
+
+}
+
+.info-card{
+
+background:rgba(255,255,255,.75);
+
+backdrop-filter:blur(10px);
+
+border-radius:18px;
+
+padding:25px;
+
+text-align:center;
+
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+transition:.3s;
+
+}
+
+.info-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.info-card h3{
+
+color:#0B2545;
+
+margin-bottom:12px;
+
+}
+
+.info-card p{
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#D62828;
+
+}
+
+/* ===========================
+Progress
+=========================== */
+
+.progressSection{
+
+padding:0 25px 20px;
+
+}
+
+.progressText{
+
+display:flex;
+
+justify-content:space-between;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+}
+
+.progressBar{
+
+height:18px;
+
+background:#ddd;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+#progressFill{
+
+width:0%;
+
+height:100%;
+
+background:linear-gradient(90deg,#16a34a,#22c55e);
+
+transition:width .5s;
+
+}
+
+/* ===========================
+Map
+=========================== */
+
+#map{
+
+height:520px;
+
+margin:25px;
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+}
+
+/* ===========================
+Bottom Cards
+=========================== */
+
+.bottom{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+
+gap:25px;
+
+padding:25px;
+
+}
+
+.driver,
+.patient{
+
+background:#fff;
+
+border-radius:18px;
+
+padding:25px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+.driver h2,
+.patient h2{
+
+margin-bottom:20px;
+
+color:#0B2545;
+
+}
+
+.driver p,
+.patient p{
+
+margin:10px 0;
+
+font-size:17px;
+
+}
+
+/* ===========================
+Buttons
+=========================== */
+
+.buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+padding:30px;
+
+}
+
+.buttons button{
+
+padding:15px 35px;
+
+font-size:17px;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+#completeBtn{
+
+background:#16a34a;
+
+color:#fff;
+
+}
+
+#completeBtn:hover{
+
+background:#15803d;
+
+transform:scale(1.05);
+
+}
+
+#returnBtn{
+
+background:#0B2545;
+
+color:#fff;
+
+}
+
+#returnBtn:hover{
+
+background:#134074;
+
+transform:scale(1.05);
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:768px){
+
+.topbar{
+
+flex-direction:column;
+
+height:auto;
+
+padding:15px;
+
+gap:10px;
+
+}
+
+#map{
+
+height:400px;
+
+margin:15px;
+
+}
+
+.dashboard{
+
+grid-template-columns:1fr;
+
+}
+
+.bottom{
+
+grid-template-columns:1fr;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+padding:20px;
+
+}
+
+.buttons button{
+
+width:100%;
+
+}
+
+}
+
+
+.statusBadge{
+
+padding:6px 14px;
+
+background:#22c55e;
+
+color:white;
+
+border-radius:20px;
+
+font-weight:bold;
+
+}

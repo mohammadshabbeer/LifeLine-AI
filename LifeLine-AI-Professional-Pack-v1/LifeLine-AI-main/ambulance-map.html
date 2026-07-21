@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LifeLine Ambulance Tracking</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css">
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
+<link rel="stylesheet"
+href="css/ambulance.css">
+<link rel="stylesheet" href="css/mobile.css">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="logo">
+🚑 LifeLine Emergency Tracking
+</div>
+
+<div class="live">
+
+<span class="pulse"></span>
+
+LIVE TRACKING
+
+</div>
+
+</header>
+
+<section class="dashboard">
+
+<div class="info-card">
+
+<h3>Status</h3>
+
+<p id="status">Preparing...</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Distance</h3>
+
+<p id="distance">0 KM</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>ETA</h3>
+
+<p id="eta">Calculating...</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Speed</h3>
+
+<p id="speed">40 km/h</p>
+
+</div>
+
+</section>
+
+<section class="progressSection">
+
+<div class="progressText">
+
+Hospital
+
+<span id="progressPercent">
+
+0%
+
+</span>
+
+Patient
+
+</div>
+
+<div class="progressBar">
+
+<div id="progressFill"></div>
+
+</div>
+
+</section>
+
+<div id="map"></div>
+
+<section class="bottom">
+
+<div class="driver">
+
+    <h2>🚑 Ambulance Driver</h2>
+
+    <p><b>Name:</b> <span id="driverName"></span></p>
+
+    <p><b>Phone:</b> <span id="driverPhone"></span></p>
+
+    <p><b>Vehicle No:</b> <span id="driverVehicle"></span></p>
+
+    <p><b>License:</b> <span id="driverLicense"></span></p>
+
+    <p><b>Experience:</b> <span id="driverExperience"></span></p>
+
+    <p><b>Status:</b>
+
+        <span id="driverStatus" class="statusBadge"></span>
+
+    </p>
+
+    
+</div>
+
+<div class="patient">
+
+<h2>
+
+🧑 Patient
+
+</h2>
+
+<p id="patientName"></p>
+
+<p id="patientEmergency"></p>
+
+<p id="patientHospital"></p>
+
+</div>
+
+</section>
+
+<div class="buttons">
+
+<button id="completeBtn">
+
+✅ Complete Emergency
+
+</button>
+
+<button id="returnBtn">
+
+🏥 Return Hospital
+
+</button>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+<script type="module" src="js/modules/ambulance.js"></script>
+
+<link rel="stylesheet" href="css/hospital-assistant.css">
+
+<button id="openAssistant">🤖</button>
+
+<div id="hospitalAssistant">
+
+    <div class="assistantHeader">
+
+        🤖 LifeLine AI Assistant
+
+        <button id="closeAssistant">×</button>
+
+    </div>
+
+    <div class="quickButtons">
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Dashboard'">Dashboard</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Patients'">Patients</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Billing'">Billing</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open History'">History</button>
+
+    </div>
+
+    <div id="hospitalChatMessages">
+
+        <div class="bot">
+
+            👋 Welcome to LifeLine AI Assistant.
+
+        </div>
+
+    </div>
+
+    <div class="assistantFooter">
+
+        <input
+        id="hospitalChatInput"
+        placeholder="Ask anything...">
+
+        <button id="hospitalSendBtn">
+
+            Send
+
+        </button>
+
+    </div>
+
+</div>
+
+<script type="module" src="ai/hospital-assistant.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LifeLine AI Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="css/sidebar.css">
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            🚑 LifeLine AI
+
+        </div>
+
+        <ul>
+
+            <li><a class="active" href="dashboard.html">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Dashboard
+                </a></li>
+
+            <li><a href="hospital.html">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Emergency
+                </a></li>
+
+            <li><a href="patients.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    Patients
+                </a></li>
+
+            <li><a href="billing.html">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    Billing
+                </a></li>
+
+            <li><a href="ambulance-map.html">
+                    <i class="fa-solid fa-truck-medical"></i>
+                    Ambulance
+                </a></li>
+
+            <li><a href="history.html">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    History
+                </a></li>
+
+            <li><a href="#">
+                    <i class="fa-solid fa-robot"></i>
+                    AI Assistant
+                </a></li>
+
+            <li><a href="login.html">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a></li>
+
+        </ul>
+
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <h2>Hospital Dashboard</h2>
+
+            <div class="admin">
+
+                Welcome Admin 👨‍⚕️
+
+            </div>
+
+        </header>
+
+        <!-- Statistics -->
+
+        <section class="stats">
+
+            <div class="card emergency">
+
+                <h3 id="activeCount">0</h3>
+
+                <p>🚨 Active Emergencies</p>
+
+            </div>
+
+            <div class="card patient">
+
+                <h3 id="patientCount">0</h3>
+
+                <p>👨‍⚕️ Patients</p>
+
+            </div>
+
+            <div class="card bill">
+
+                <h3 id="billCount">0</h3>
+
+                <p>📄 Bills</p>
+
+            </div>
+
+            <div class="card revenue">
+
+                <h3 id="revenue">₹0</h3>
+
+                <p>💰 Revenue</p>
+
+            </div>
+
+        </section>
+
+        <!-- Dashboard Grid -->
+
+        <section class="dashboard-grid">
+
+            <div class="panel">
+
+                <h3>🚨 Live Emergencies</h3>
+
+                <div id="liveEmergencies">
+
+                    No emergencies...
+
+                </div>
+
+            </div>
+
+            <div class="panel">
+
+                <h3>🔔 Recent Activities</h3>
+
+                <div id="activities">
+
+                    Waiting...
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="js/modules/dashboard.js"></script>
+<link rel="stylesheet" href="css/hospital-assistant.css">
+
+<button id="openAssistant">🤖</button>
+
+<div id="hospitalAssistant">
+
+    <div class="assistantHeader">
+
+        🤖 LifeLine AI Assistant
+
+        <button id="closeAssistant">×</button>
+
+    </div>
+
+    <div class="quickButtons">
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Dashboard'">Dashboard</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Patients'">Patients</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Billing'">Billing</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open History'">History</button>
+
+    </div>
+
+    <div id="hospitalChatMessages">
+
+        <div class="bot">
+
+            👋 Welcome to LifeLine AI Assistant.
+
+        </div>
+
+    </div>
+
+    <div class="assistantFooter">
+
+        <input
+        id="hospitalChatInput"
+        placeholder="Ask anything...">
+
+        <button id="hospitalSendBtn">
+
+            Send
+
+        </button>
+
+    </div>
+
+</div>
+
+<script type="module" src="ai/hospital-assistant.js"></script>
+</body>
+
+</html>

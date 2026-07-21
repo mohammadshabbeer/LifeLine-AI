@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LifeLine AI | Hospital Emergency Panel</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="css/style.css">
+
+    <link rel="stylesheet"
+        href="css/sidebar.css">
+
+    <link rel="stylesheet"
+        href="css/topbar.css">
+
+    <link rel="stylesheet"
+        href="css/hospital.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h1>🚑 LifeLine AI</h1>
+
+<ul>
+
+<li><a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+
+<li><a class="active" href="hospital.html"><i class="fa-solid fa-truck-medical"></i> Emergency Panel</a></li>
+
+<li><a href="patients.html"><i class="fa-solid fa-user-doctor"></i> Patients</a></li>
+
+<li><a href="billing.html"><i class="fa-solid fa-file-invoice-dollar"></i> Billing</a></li>
+
+<li><a href="history.html"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
+
+<li><a href="ambulance-map.html"><i class="fa-solid fa-map-location-dot"></i> Ambulance</a></li>
+
+<li><a href="dashboard.html"><i class="fa-solid fa-arrow-left"></i> Dashboard</a></li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="topbar">
+
+<h2>🚨 Hospital Emergency Panel</h2>
+
+<div class="right">
+
+<div class="counter">
+
+Active Emergencies :
+
+<span id="activeCount">0</span>
+
+</div>
+
+<div id="clock" class="clock"></div>
+
+</div>
+
+</div>
+
+<div class="toolbar">
+
+<button id="latestBtn">
+
+Latest
+
+</button>
+
+<button id="historyBtn">
+
+History
+
+</button>
+
+<button id="soundBtn">
+
+🔊 Alarm ON
+
+</button>
+
+</div>
+
+<div id="emergencyContainer">
+
+<!-- Emergency Cards -->
+
+</div>
+
+</div>
+
+<audio id="alarmAudio" preload="auto">
+    <source src="assets/sounds/alert.mp3" type="audio/mpeg">
+</audio>
+
+<script
+type="module"
+src="js/modules/hospital.js">
+
+</script>
+<link rel="stylesheet" href="css/hospital-assistant.css">
+
+<button id="openAssistant">
+🤖
+</button>
+
+<div id="hospitalAssistant">
+
+<div class="assistantHeader">
+
+LifeLine AI Assistant
+
+<button id="closeAssistant">
+
+×
+
+</button>
+
+</div>
+
+<div class="quickButtons">
+
+<button onclick="document.getElementById('hospitalChatInput').value='How do I add a patient?'">
+Add Patient
+</button>
+
+<button onclick="document.getElementById('hospitalChatInput').value='How do I generate a bill?'">
+Billing
+</button>
+
+<button onclick="document.getElementById('hospitalChatInput').value='How do I dispatch an ambulance?'">
+Ambulance
+</button>
+
+<button onclick="document.getElementById('hospitalChatInput').value='Show dashboard features'">
+Dashboard
+</button>
+
+</div>
+
+<div id="hospitalChatMessages">
+
+<div class="bot">
+
+👋 Welcome to LifeLine AI.
+
+Ask me anything about this Hospital ERP System.
+
+</div>
+
+</div>
+
+<div class="assistantFooter">
+
+<input
+id="hospitalChatInput"
+placeholder="Ask anything about LifeLine...">
+
+<button id="hospitalSendBtn">
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+<script type="module" src="ai/hospital-assistant.js"></script>
+
+</body>
+
+</html>
