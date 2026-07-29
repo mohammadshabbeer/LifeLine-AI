@@ -1,0 +1,339 @@
+/* ===========================
+   DASHBOARD MAIN LAYOUT
+=========================== */
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#eef3f8;
+    display:flex;
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar{
+
+    width:260px;
+    min-height:100vh;
+
+    background:#0B2545;
+
+    color:white;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+.logo{
+
+    text-align:center;
+
+    padding:30px;
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    border-bottom:1px solid rgba(255,255,255,.2);
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.sidebar li{
+
+    margin:6px 0;
+
+}
+
+.sidebar a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px 22px;
+
+    transition:.3s;
+
+}
+
+.sidebar a:hover{
+
+    background:#D62828;
+
+}
+
+.sidebar .active{
+
+    background:#D62828;
+
+}
+
+/* ===========================
+   MAIN CONTENT
+=========================== */
+
+.main{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    padding:25px;
+
+}
+
+/* ===========================
+   TOPBAR
+=========================== */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.topbar h2{
+
+    margin:0;
+
+    color:#0B2545;
+
+}
+
+.admin{
+
+    background:white;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   STAT CARDS
+=========================== */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.card{
+
+    color:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card h3{
+
+    margin:0;
+
+    font-size:38px;
+
+}
+
+.card p{
+
+    margin-top:12px;
+
+    font-size:18px;
+
+}
+
+.emergency{
+
+    background:linear-gradient(135deg,#D62828,#FF4D6D);
+
+}
+
+.patient{
+
+    background:linear-gradient(135deg,#0077B6,#00B4D8);
+
+}
+
+.bill{
+
+    background:linear-gradient(135deg,#6A4C93,#9D4EDD);
+
+}
+
+.revenue{
+
+    background:linear-gradient(135deg,#2A9D8F,#52B788);
+
+}
+
+/* ===========================
+   GRID PANELS
+=========================== */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+.panel{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.panel h3{
+
+    margin-top:0;
+
+    color:#0B2545;
+
+    border-bottom:2px solid #eee;
+
+    padding-bottom:12px;
+
+}
+
+/* ===========================
+   LIVE EMERGENCY CARD
+=========================== */
+
+.live-card{
+
+    padding:15px;
+
+    border-left:6px solid #D62828;
+
+    background:#FFF5F5;
+
+    border-radius:10px;
+
+    margin-bottom:15px;
+
+}
+
+.live-card h4{
+
+    margin:0;
+
+    color:#D62828;
+
+}
+
+.live-card p{
+
+    margin:5px 0;
+
+}
+
+/* ===========================
+   ACTIVITY ITEM
+=========================== */
+
+.activity{
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    background:#F8F9FA;
+
+    border-left:5px solid #0077B6;
+
+    border-radius:10px;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+.sidebar{
+
+    width:100%;
+
+    position:relative;
+
+    min-height:auto;
+
+}
+
+.main{
+
+    margin-left:0;
+
+    width:100%;
+
+}
+
+.dashboard-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}

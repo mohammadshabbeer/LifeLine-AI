@@ -1,0 +1,591 @@
+/* =========================================================
+   LifeLine AI - Responsive Mobile Layout
+   Desktop styles remain unchanged
+   ========================================================= */
+
+/* Prevent unwanted horizontal scrolling */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   TABLET VIEW
+   ========================================================= */
+
+@media screen and (max-width: 1024px) {
+  .main {
+    padding: 20px;
+  }
+
+  .stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .toolbar button {
+    flex: 1 1 180px;
+  }
+
+  .patient-form,
+  .billing-form {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   MOBILE VIEW
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    width: 100%;
+    min-width: 320px;
+    margin: 0;
+    overflow-x: hidden;
+    font-size: 15px;
+  }
+
+  /* -------------------------------------------------------
+     GENERAL ELEMENTS
+     ------------------------------------------------------- */
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 46px;
+    padding: 12px 13px;
+    font-size: 16px;
+  }
+
+  textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  button,
+  .btn {
+    min-height: 46px;
+    padding: 11px 15px;
+    font-size: 15px;
+    touch-action: manipulation;
+  }
+
+  /* -------------------------------------------------------
+     SIDEBAR AS MOBILE NAVIGATION
+     ------------------------------------------------------- */
+
+  .sidebar {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 10px 0;
+    overflow: visible;
+    z-index: 50;
+  }
+
+  .sidebar h1,
+  .sidebar .logo,
+  .logo {
+    width: 100%;
+    margin: 0;
+    padding: 12px 16px;
+    font-size: 21px;
+    text-align: center;
+  }
+
+  .sidebar ul {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 0;
+    padding: 9px 12px 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  .sidebar ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar li {
+    flex: 0 0 auto;
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+
+  .sidebar li a,
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: auto;
+    min-height: 42px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .sidebar li a i {
+    flex: 0 0 auto;
+  }
+
+  /* -------------------------------------------------------
+     MAIN CONTENT
+     ------------------------------------------------------- */
+
+  .main {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    margin-left: 0;
+    padding: 14px;
+  }
+
+  /* -------------------------------------------------------
+     TOP BAR
+     ------------------------------------------------------- */
+
+  .topbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  .topbar h1,
+  .topbar h2,
+  .topbar h3 {
+    width: 100%;
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+
+  .topbar .right,
+  .topbar .admin {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .topbar .counter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .clock {
+    width: 100%;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .theme-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* -------------------------------------------------------
+     TOOLBAR
+     ------------------------------------------------------- */
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .toolbar button,
+  .toolbar .btn {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* -------------------------------------------------------
+     DASHBOARD STATISTICS
+     ------------------------------------------------------- */
+
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .stats .card,
+  .card {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 18px;
+    border-radius: 15px;
+  }
+
+  .card h2,
+  .card h3 {
+    margin-top: 0;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .card p {
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* -------------------------------------------------------
+     DASHBOARD PANELS
+     ------------------------------------------------------- */
+
+  .dashboard-grid,
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .panel,
+  .info-card {
+    width: 100%;
+    min-width: 0;
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .panel h2,
+  .panel h3,
+  .info-card h3 {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  /* -------------------------------------------------------
+     EMERGENCY CARDS
+     ------------------------------------------------------- */
+
+  #emergencyContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .emergency-card {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 16px;
+    border-radius: 15px;
+    word-break: break-word;
+  }
+
+  .emergency-card h2,
+  .emergency-card h3 {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+
+  .emergency-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .emergency-card .actions,
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    width: 100%;
+  }
+
+  .emergency-card .actions button,
+  .actions button {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* -------------------------------------------------------
+     FORMS
+     ------------------------------------------------------- */
+
+  .patient-form,
+  .billing-form,
+  .emergency-form,
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 13px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .patient-form > *,
+  .billing-form > *,
+  .emergency-form > *,
+  .form-grid > * {
+    min-width: 0;
+  }
+
+  .form-group {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  /* -------------------------------------------------------
+     FILTERS
+     ------------------------------------------------------- */
+
+  .filters {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .filters input,
+  .filters select,
+  .filters button {
+    width: 100%;
+  }
+
+  /* -------------------------------------------------------
+     TABLES
+     ------------------------------------------------------- */
+
+  .table-container,
+  .table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    display: table;
+    width: max-content;
+    min-width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+  }
+
+  th,
+  td {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+
+  /* -------------------------------------------------------
+     AMBULANCE MAP
+     ------------------------------------------------------- */
+
+  #map {
+    width: calc(100% - 28px);
+    height: 330px;
+    margin: 14px;
+    border-radius: 14px;
+  }
+
+  .bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px;
+  }
+
+  .driver,
+  .patient {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+  }
+
+  .buttons button {
+    width: 100%;
+  }
+
+  /* -------------------------------------------------------
+     CHATBOT / ASSISTANT
+     ------------------------------------------------------- */
+
+  #openAssistant {
+    right: 16px;
+    bottom: 16px;
+    width: 54px;
+    height: 54px;
+    z-index: 999;
+  }
+
+  #hospitalAssistant {
+    right: 12px;
+    bottom: 80px;
+    left: 12px;
+    width: auto;
+    max-width: none;
+    height: min(72vh, 560px);
+    border-radius: 16px;
+  }
+
+  .quickButtons {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .quickButtons button {
+    min-width: 0;
+    padding: 9px 7px;
+    font-size: 12px;
+  }
+
+  /* -------------------------------------------------------
+     LONG TEXT SAFETY
+     ------------------------------------------------------- */
+
+  p,
+  span,
+  strong,
+  a,
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE VIEW
+   ========================================================= */
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .topbar {
+    padding: 13px;
+  }
+
+  .topbar h1,
+  .topbar h2 {
+    font-size: 19px;
+  }
+
+  .sidebar h1,
+  .sidebar .logo,
+  .logo {
+    font-size: 19px;
+  }
+
+  .sidebar li a,
+  .sidebar a {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .stats .card,
+  .card,
+  .panel,
+  .info-card,
+  .emergency-card {
+    padding: 14px;
+  }
+
+  .card h2,
+  .card h3 {
+    font-size: 27px;
+  }
+
+  #map {
+    width: calc(100% - 20px);
+    height: 285px;
+    margin: 10px;
+  }
+
+  .quickButtons {
+    grid-template-columns: 1fr;
+  }
+}

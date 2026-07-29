@@ -1,0 +1,604 @@
+/* ==========================
+   Floating AI Button
+========================== */
+
+#chatbotBtn{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:75px;
+
+height:75px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#0B5ED7,#2563EB);
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:34px;
+
+cursor:pointer;
+
+box-shadow:0 15px 35px rgba(0,0,0,.30);
+
+z-index:9999;
+
+transition:.3s;
+
+animation:pulse 2s infinite;
+
+}
+
+#chatbotBtn:hover{
+
+transform:scale(1.08);
+
+}
+
+@keyframes pulse{
+
+0%{
+
+box-shadow:0 0 0 0 rgba(37,99,235,.5);
+
+}
+
+70%{
+
+box-shadow:0 0 0 20px rgba(37,99,235,0);
+
+}
+
+100%{
+
+box-shadow:0 0 0 0 rgba(37,99,235,0);
+
+}
+
+}
+
+
+/* ==========================
+   Main Chat Window
+========================== */
+
+#chatbot{
+
+position:fixed;
+
+top:20px;
+
+right:-650px;
+
+width:520px;
+
+height:calc(100vh - 40px);
+
+background:white;
+
+border-radius:25px 0 0 25px;
+
+display:flex;
+
+flex-direction:column;
+
+transition:.35s;
+
+overflow:hidden;
+
+box-shadow:-15px 0 45px rgba(0,0,0,.25);
+
+z-index:9999;
+
+}
+
+#chatbot.show{
+
+right:0;
+
+}
+
+
+/* ==========================
+   Header
+========================== */
+
+.chat-header{
+
+padding:22px;
+
+background:linear-gradient(135deg,#0B5ED7,#2563EB);
+
+color:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.chat-header h3{
+
+margin:0;
+
+font-size:22px;
+
+}
+
+.chat-header button{
+
+background:none;
+
+border:none;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+}
+
+
+/* ==========================
+   Messages
+========================== */
+
+#chatMessages{
+
+flex:1;
+
+padding:25px;
+
+overflow-y:auto;
+
+background:#F4F8FC;
+
+}
+
+
+/* Scrollbar */
+
+#chatMessages::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+#chatMessages::-webkit-scrollbar-thumb{
+
+background:#b5c8f3;
+
+border-radius:20px;
+
+}
+
+
+/* Bot */
+
+.bot{
+
+max-width:90%;
+
+background:white;
+
+padding:16px;
+
+border-radius:18px;
+
+margin-bottom:18px;
+
+box-shadow:0 5px 12px rgba(0,0,0,.08);
+
+line-height:1.7;
+
+font-size:15px;
+
+}
+
+
+/* User */
+
+.user{
+
+max-width:90%;
+
+margin-left:auto;
+
+background:linear-gradient(135deg,#0B5ED7,#2563EB);
+
+color:white;
+
+padding:16px;
+
+border-radius:18px;
+
+margin-bottom:18px;
+
+line-height:1.7;
+
+font-size:15px;
+
+}
+
+
+/* ==========================
+   Footer
+========================== */
+
+.chat-input{
+
+padding:20px;
+
+background:white;
+
+border-top:1px solid #E6EAF0;
+
+display:flex;
+
+gap:12px;
+
+}
+
+.chat-input input{
+
+flex:1;
+
+padding:15px;
+
+font-size:16px;
+
+border-radius:12px;
+
+border:1px solid #D8DDE6;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.chat-input input:focus{
+
+border-color:#2563EB;
+
+box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+.chat-input button{
+
+padding:15px 24px;
+
+background:#2563EB;
+
+border:none;
+
+color:white;
+
+font-size:15px;
+
+font-weight:bold;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.chat-input button:hover{
+
+background:#124EC5;
+
+}
+
+
+/* ==========================
+   Emergency Button
+========================== */
+
+#emergencyAction{
+
+padding:15px;
+
+background:white;
+
+border-top:1px solid #E6EAF0;
+
+}
+
+.danger-btn{
+
+width:100%;
+
+padding:18px;
+
+border:none;
+
+border-radius:14px;
+
+background:linear-gradient(135deg,#D62828,#B91C1C);
+
+color:white;
+
+font-size:17px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.danger-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 20px rgba(214,40,40,.35);
+
+}
+
+
+/* ==========================
+   Mobile
+========================== */
+
+@media(max-width:768px){
+
+#chatbot{
+
+width:100%;
+
+height:100%;
+
+top:0;
+
+border-radius:0;
+
+right:-100%;
+
+}
+
+#chatbot.show{
+
+right:0;
+
+}
+
+#chatbotBtn{
+
+bottom:20px;
+
+right:20px;
+
+}
+
+}
+/* ==================================================
+   CHATBOT LIGHT / DARK MODE TEXT VISIBILITY FIX
+   Paste at the bottom of chatbot.css
+================================================== */
+
+/* Main chatbot window */
+
+#chatbot {
+    background: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Chat header */
+
+#chatbot .chat-header {
+    background: linear-gradient(135deg, #1565c0, #2563eb) !important;
+    color: #ffffff !important;
+}
+
+#chatbot .chat-header h1,
+#chatbot .chat-header h2,
+#chatbot .chat-header h3,
+#chatbot .chat-header p,
+#chatbot .chat-header span {
+    color: #ffffff !important;
+}
+
+#chatbot #closeChat {
+    color: #ffffff !important;
+}
+
+/* Chat messages area */
+
+#chatMessages {
+    background: var(--card-secondary-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Bot messages */
+
+#chatMessages .bot {
+    background: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 8px 22px var(--shadow-color) !important;
+}
+
+/* All content inside bot response */
+
+#chatMessages .bot p,
+#chatMessages .bot span,
+#chatMessages .bot div,
+#chatMessages .bot li,
+#chatMessages .bot strong,
+#chatMessages .bot b {
+    color: var(--text-primary) !important;
+}
+
+/* Secondary text inside bot response */
+
+#chatMessages .bot small,
+#chatMessages .bot .secondary-text,
+#chatMessages .bot .description {
+    color: var(--text-secondary) !important;
+}
+
+/* Lists inside AI response */
+
+#chatMessages .bot ul,
+#chatMessages .bot ol {
+    color: var(--text-primary) !important;
+}
+
+#chatMessages .bot li {
+    margin-bottom: 6px;
+}
+
+/* User message */
+
+#chatMessages .user {
+    background: linear-gradient(135deg, #1565c0, #2563eb) !important;
+    color: #ffffff !important;
+}
+
+#chatMessages .user p,
+#chatMessages .user span,
+#chatMessages .user strong,
+#chatMessages .user b {
+    color: #ffffff !important;
+}
+
+/* Chat input section */
+
+#chatbot .chat-input {
+    background: var(--card-bg) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+#chatbot .chat-input input,
+#chatbot #userInput {
+    background: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+#chatbot .chat-input input::placeholder,
+#chatbot #userInput::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 1;
+}
+
+/* Standard send button */
+
+#chatbot #sendBtn {
+    background: linear-gradient(135deg, #1565c0, #2563eb) !important;
+    color: #ffffff !important;
+}
+
+/* Emergency action area */
+
+#emergencyAction {
+    background: var(--card-bg) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+#sendEmergencyBtn {
+    color: #ffffff !important;
+}
+
+/* ==================================================
+   DARK MODE CHATBOT
+================================================== */
+
+html[data-theme="dark"] #chatbot {
+    background: #172033 !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] #chatMessages {
+    background: #0f172a !important;
+}
+
+html[data-theme="dark"] #chatMessages .bot {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] #chatMessages .bot p,
+html[data-theme="dark"] #chatMessages .bot span,
+html[data-theme="dark"] #chatMessages .bot div,
+html[data-theme="dark"] #chatMessages .bot li,
+html[data-theme="dark"] #chatMessages .bot strong,
+html[data-theme="dark"] #chatMessages .bot b {
+    color: #f1f5f9 !important;
+}
+
+html[data-theme="dark"] #chatMessages .bot small,
+html[data-theme="dark"] #chatMessages .bot .secondary-text,
+html[data-theme="dark"] #chatMessages .bot .description {
+    color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] #chatMessages .user {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] #chatbot .chat-input {
+    background: #172033 !important;
+    border-top-color: #334155 !important;
+}
+
+html[data-theme="dark"] #chatbot .chat-input input,
+html[data-theme="dark"] #chatbot #userInput {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+html[data-theme="dark"] #chatbot .chat-input input::placeholder,
+html[data-theme="dark"] #chatbot #userInput::placeholder {
+    color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] #emergencyAction {
+    background: #172033 !important;
+    border-top-color: #334155 !important;
+}
+
+/* Make generated headings clearly visible */
+
+html[data-theme="dark"] #chatMessages .bot h1,
+html[data-theme="dark"] #chatMessages .bot h2,
+html[data-theme="dark"] #chatMessages .bot h3,
+html[data-theme="dark"] #chatMessages .bot h4,
+html[data-theme="dark"] #chatMessages .bot h5 {
+    color: #ffffff !important;
+}
+
+/* Links inside chatbot */
+
+#chatMessages .bot a {
+    color: #2563eb !important;
+    font-weight: 700;
+}
+
+html[data-theme="dark"] #chatMessages .bot a {
+    color: #60a5fa !important;
+}

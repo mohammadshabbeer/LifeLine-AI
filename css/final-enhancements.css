@@ -1,0 +1,146 @@
+/* LifeLine AI Final Visual Upgrade — safe enhancement layer */
+:root {
+  --ll-navy: #082f49;
+  --ll-blue: #0f6cbd;
+  --ll-cyan: #06b6d4;
+  --ll-green: #16a34a;
+  --ll-red: #dc2626;
+  --ll-surface: rgba(255,255,255,.88);
+  --ll-border: rgba(148,163,184,.22);
+  --ll-shadow: 0 18px 45px rgba(15,23,42,.10);
+  --ll-shadow-hover: 0 24px 60px rgba(15,23,42,.16);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background:
+    radial-gradient(circle at 8% 5%, rgba(14,165,233,.10), transparent 28%),
+    radial-gradient(circle at 94% 12%, rgba(34,197,94,.08), transparent 24%),
+    linear-gradient(180deg, #f8fbff 0%, #eef6fb 100%);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .28;
+  background-image: linear-gradient(rgba(15,108,189,.035) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(15,108,189,.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+  z-index: -1;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #073b61 0%, #075985 52%, #0c4a6e 100%) !important;
+  box-shadow: 14px 0 38px rgba(2, 44, 75, .16);
+  border-right: 1px solid rgba(255,255,255,.09);
+}
+.sidebar a, .sidebar li a {
+  transition: transform .22s ease, background .22s ease, box-shadow .22s ease !important;
+}
+.sidebar a:hover, .sidebar li a:hover {
+  transform: translateX(5px);
+  background: rgba(255,255,255,.14) !important;
+  box-shadow: inset 3px 0 0 rgba(125,211,252,.9);
+}
+
+.topbar, .panel, .card, .info-card, .driver-card, .emergency-card,
+.completed-trip-card, .completed-stat-card, .form-card, .login-card {
+  border: 1px solid var(--ll-border) !important;
+  background: var(--ll-surface) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--ll-shadow) !important;
+}
+
+.card, .panel, .info-card, .driver-card, .emergency-card,
+.completed-trip-card, .completed-stat-card {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card:hover, .panel:hover, .info-card:hover, .driver-card:hover,
+.emergency-card:hover, .completed-trip-card:hover, .completed-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ll-shadow-hover) !important;
+  border-color: rgba(14,165,233,.34) !important;
+}
+
+button, .btn, a[class*="button"], input[type="submit"] {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px !important;
+  font-weight: 700;
+  letter-spacing: .01em;
+  box-shadow: 0 9px 22px rgba(15,108,189,.14);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease !important;
+}
+button:hover, .btn:hover, a[class*="button"]:hover, input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(15,108,189,.23);
+  filter: saturate(1.08);
+}
+button:active, .btn:active { transform: translateY(0) scale(.98); }
+
+input, select, textarea {
+  border: 1px solid rgba(148,163,184,.38) !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.92) !important;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 4px rgba(56,189,248,.14) !important;
+  outline: none !important;
+}
+
+table {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(15,23,42,.08);
+}
+thead, th {
+  background: linear-gradient(135deg, #0b4f79, #0f6cbd) !important;
+  color: #fff !important;
+}
+tbody tr { transition: background .18s ease, transform .18s ease; }
+tbody tr:hover { background: rgba(224,242,254,.66) !important; }
+
+.status-badge, .available, .busy, [class*="status"] {
+  font-weight: 700;
+}
+
+#map, .leaflet-container {
+  border: 5px solid rgba(255,255,255,.9);
+  box-shadow: 0 18px 42px rgba(15,23,42,.16) !important;
+}
+
+#chatbot, #hospitalAssistant {
+  border: 1px solid rgba(14,165,233,.25) !important;
+  box-shadow: 0 26px 65px rgba(15,23,42,.22) !important;
+  overflow: hidden;
+}
+
+.live-indicator, .live-badge, .completed-status {
+  box-shadow: 0 0 0 5px rgba(34,197,94,.08);
+}
+
+h1, h2, h3 { letter-spacing: -.02em; }
+
+@keyframes llFadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.main > *, main > *, .container > * {
+  animation: llFadeUp .48s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 768px) {
+  body { background-attachment: scroll; }
+  .card:hover, .panel:hover, .driver-card:hover, .emergency-card:hover { transform: none; }
+  .sidebar a:hover, .sidebar li a:hover { transform: none; }
+}

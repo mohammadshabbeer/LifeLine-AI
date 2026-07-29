@@ -1,0 +1,635 @@
+/* ==================================================
+   LIFELINE AI USER EMERGENCY PORTAL
+   Presentation-only styling
+================================================== */
+
+/* ==================================================
+   PAGE
+================================================== */
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(25, 118, 210, 0.12),
+            transparent 30%
+        ),
+        var(--page-bg);
+    color: var(--text-primary);
+}
+
+/* ==================================================
+   HEADER AND NAVBAR
+================================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    width: 100%;
+    background: rgba(211, 47, 47, 0.96);
+    box-shadow: 0 8px 30px rgba(160, 20, 20, 0.2);
+    backdrop-filter: blur(14px);
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(1500px, 100%);
+    min-height: 72px;
+    margin: auto;
+    padding: 0 28px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 11px;
+    background: #ffffff;
+    color: #d9232e;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(100, 0, 0, 0.14);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(100, 0, 0, 0.2);
+}
+
+/* Override global theme button for red navbar */
+
+header .theme-toggle {
+    min-width: 125px;
+    min-height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    box-shadow: none;
+}
+
+header .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.23);
+}
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 215px;
+    padding: 52px 24px;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(135deg, #173a67, #3e7da0);
+    color: #ffffff;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 230px;
+    height: 230px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: -90px;
+    left: -50px;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    color: #ffffff !important;
+    font-size: clamp(28px, 4vw, 43px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 10px auto 0;
+    color: rgba(255, 255, 255, 0.88) !important;
+    font-size: 16px;
+}
+
+/* ==================================================
+   MAIN USER PORTAL LAYOUT
+================================================== */
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(420px, 0.95fr) minmax(500px, 1.25fr);
+    align-items: start;
+    gap: 24px;
+    width: min(1540px, 100%);
+    margin: auto;
+    padding: 34px 24px 55px;
+}
+
+.left,
+.right {
+    min-width: 0;
+}
+
+.left {
+    padding: 26px;
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
+    background: var(--card-bg);
+    box-shadow: 0 18px 45px var(--shadow-color);
+}
+
+.left > h2 {
+    position: relative;
+    margin: 0 0 23px;
+    padding-left: 17px;
+    color: var(--text-primary) !important;
+    font-size: 23px;
+    font-weight: 750;
+}
+
+.left > h2::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 0;
+    width: 5px;
+    border-radius: 10px;
+    background: linear-gradient(#ef2b35, #ff6b73);
+}
+
+/* ==================================================
+   EMERGENCY FORM
+================================================== */
+
+#emergencyForm {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+#emergencyForm input,
+#emergencyForm select,
+#emergencyForm textarea {
+    width: 100%;
+    min-height: 51px;
+    padding: 13px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 11px;
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+#emergencyForm textarea {
+    min-height: 105px;
+    resize: vertical;
+}
+
+#emergencyForm input:hover,
+#emergencyForm select:hover,
+#emergencyForm textarea:hover {
+    border-color: rgba(25, 118, 210, 0.55);
+}
+
+#emergencyForm input:focus,
+#emergencyForm select:focus,
+#emergencyForm textarea:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.12);
+}
+
+#emergencyForm input::placeholder,
+#emergencyForm textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 2px;
+}
+
+.buttons button {
+    min-height: 50px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 11px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #d9232e, #ef3340);
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 9px 20px rgba(217, 35, 46, 0.22);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+.buttons button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+    box-shadow: 0 13px 27px rgba(217, 35, 46, 0.3);
+}
+
+.buttons button:active {
+    transform: translateY(0);
+}
+
+/* Detect-location button */
+
+#gpsBtn {
+    background: linear-gradient(135deg, #1565c0, #2684e5);
+    box-shadow: 0 9px 20px rgba(21, 101, 192, 0.22);
+}
+
+/* ==================================================
+   MAP AREA
+================================================== */
+
+.right {
+    position: sticky;
+    top: 105px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
+    background: var(--card-bg);
+    box-shadow: 0 18px 45px var(--shadow-color);
+}
+
+.right::before {
+    content: "📍 Live Emergency Location";
+    display: block;
+    padding: 8px 8px 16px;
+    color: var(--text-primary);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+#map {
+    width: 100%;
+    height: 590px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--card-secondary-bg);
+    z-index: 1;
+}
+
+/* ==================================================
+   LIVE EMERGENCY STATUS
+================================================== */
+
+.statusCard {
+    margin-top: 22px;
+    padding: 21px 18px 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 17px;
+    background: var(--card-secondary-bg);
+    box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.statusCard > h2 {
+    margin: 0 0 14px;
+    color: var(--text-primary) !important;
+    font-size: 19px;
+    font-weight: 750;
+}
+
+#liveStatus {
+    margin: 0 0 21px;
+    padding: 12px 14px;
+    border-left: 4px solid #1976d2;
+    border-radius: 8px;
+    background: rgba(25, 118, 210, 0.09);
+    color: #1565c0 !important;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.tracker {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding-top: 3px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 69px;
+    text-align: center;
+}
+
+.step .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 3px solid #d6dbe3;
+    border-radius: 50%;
+    background: #e4e7ec;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    transition: 0.25s ease;
+}
+
+.step p {
+    margin-top: 8px;
+    color: var(--text-muted) !important;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.step.active .circle {
+    border-color: #20ad55;
+    background: #20ad55;
+    box-shadow: 0 7px 17px rgba(32, 173, 85, 0.3);
+}
+
+.step.active p {
+    color: #168c47 !important;
+    font-weight: 700;
+}
+
+.line {
+    flex: 1;
+    min-width: 18px;
+    max-width: 64px;
+    height: 4px;
+    margin-top: 18px;
+    border-radius: 10px;
+    background: #d6d9de;
+    transition: background 0.25s ease;
+}
+
+.line.active {
+    background: #20ad55;
+}
+
+/* ==================================================
+   DARK MODE
+================================================== */
+
+html[data-theme="dark"] .left,
+html[data-theme="dark"] .right {
+    background: #172033;
+    border-color: #334155;
+}
+
+html[data-theme="dark"] .statusCard {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+html[data-theme="dark"] .left > h2,
+html[data-theme="dark"] .right::before,
+html[data-theme="dark"] .statusCard > h2 {
+    color: #f8fafc !important;
+}
+
+html[data-theme="dark"] #liveStatus {
+    background: rgba(96, 165, 250, 0.12);
+    color: #93c5fd !important;
+    border-left-color: #60a5fa;
+}
+
+html[data-theme="dark"] .step p {
+    color: #94a3b8 !important;
+}
+
+html[data-theme="dark"] .step.active p {
+    color: #4ade80 !important;
+}
+
+html[data-theme="dark"] .step .circle {
+    border-color: #475569;
+    background: #475569;
+}
+
+html[data-theme="dark"] .step.active .circle {
+    border-color: #22c55e;
+    background: #22c55e;
+}
+
+html[data-theme="dark"] .line {
+    background: #475569;
+}
+
+html[data-theme="dark"] .line.active {
+    background: #22c55e;
+}
+
+/* ==================================================
+   CHATBOT FLOATING BUTTON
+================================================== */
+
+#chatbotBtn {
+    right: 25px !important;
+    bottom: 25px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 58px !important;
+    height: 58px !important;
+    border: 3px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #1565c0, #3949ab) !important;
+    box-shadow: 0 13px 30px rgba(21, 101, 192, 0.38) !important;
+    font-size: 27px !important;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#chatbotBtn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 18px 38px rgba(21, 101, 192, 0.48) !important;
+}
+
+/* ==================================================
+   RESPONSIVE DESIGN
+================================================== */
+
+@media screen and (max-width: 1100px) {
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .right {
+        position: relative;
+        top: auto;
+    }
+
+    #map {
+        height: 470px;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+
+    header nav {
+        min-height: 66px;
+        padding: 0 16px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    header .theme-toggle {
+        min-width: 44px;
+        width: 44px;
+        padding: 0;
+    }
+
+    header .theme-toggle-text {
+        display: none;
+    }
+
+    .login-btn {
+        min-height: 41px;
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 185px;
+        padding: 42px 18px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .container {
+        gap: 18px;
+        padding: 20px 14px 40px;
+    }
+
+    .left,
+    .right {
+        padding: 17px;
+        border-radius: 17px;
+    }
+
+    .buttons {
+        grid-template-columns: 1fr;
+    }
+
+    #map {
+        height: 390px;
+    }
+
+    .statusCard {
+        padding: 18px 10px;
+    }
+
+    .tracker {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 8px;
+    }
+
+    .step {
+        width: 64px;
+    }
+
+    .line {
+        min-width: 28px;
+    }
+
+}
+
+@media screen and (max-width: 440px) {
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .nav-actions {
+        gap: 7px;
+    }
+
+    .login-btn {
+        padding: 8px 9px;
+        font-size: 11px;
+    }
+
+    #map {
+        height: 330px;
+    }
+
+}

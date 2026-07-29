@@ -1,0 +1,35 @@
+:root {
+
+    /* Hospital Theme */
+    --primary: #d62828;
+    --primary-dark: #b71c1c;
+    --secondary: #1d3557;
+    --accent: #457b9d;
+
+    /* Background */
+    --bg: #f5f8fc;
+    --card: #ffffff;
+
+    /* Text */
+    --text: #1f2937;
+    --light: #6b7280;
+
+    /* Status */
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --danger: #e63946;
+    --info: #3498db;
+
+    /* Sidebar */
+    --sidebar: #16213e;
+
+    /* Radius */
+    --radius:16px;
+
+    /* Shadow */
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+
+    /* Animation */
+    --transition:.3s ease;
+
+}

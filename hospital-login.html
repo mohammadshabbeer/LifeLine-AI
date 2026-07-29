@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("lifeline-theme");
+            const prefersDark = window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.setAttribute(
+                "data-theme",
+                savedTheme || (prefersDark ? "dark" : "light")
+            );
+        })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLine AI | Hospital Login</title>
+
+    <!-- Phase 1: Tailwind CSS integration. Existing CSS remains as a safe fallback. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ["class", '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    colors: {
+                        lifeline: {
+                            red: "#dc2626",
+                            blue: "#1d4ed8",
+                            navy: "#0f172a"
+                        }
+                    },
+                    boxShadow: {
+                        lifeline: "0 24px 70px rgba(15, 23, 42, 0.18)"
+                    }
+                }
+            }
+        };
+    </script>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/hospital-login.css">
+<link rel="stylesheet" href="css/professional-ui.css">
+<link rel="stylesheet" href="css/final-enhancements.css">
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 antialiased [data-theme=dark]:bg-slate-950 [data-theme=dark]:text-slate-100">
+    <main class="hospital-login-page min-h-screen lg:grid lg:grid-cols-2">
+        <section class="login-brand-panel relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-red-950 px-6 py-12 text-white sm:px-10 lg:flex lg:items-center lg:px-16">
+            <div class="brand-content relative z-10 mx-auto w-full max-w-xl">
+                <div class="brand-logo mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-4xl ring-1 ring-white/20 backdrop-blur">🚑</div>
+                <div class="mb-4 flex items-center gap-3"><p class="brand-label text-sm font-semibold uppercase tracking-[0.25em] text-blue-200">LifeLine AI</p><span class="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white/90">Tailwind CSS UI</span></div>
+                <h1 class="max-w-2xl text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">Multi-Hospital Emergency Response System</h1>
+                <p class="brand-description mt-5 max-w-xl text-base leading-7 text-slate-200">
+                    Securely access your hospital's emergency dashboard,
+                    view only your assigned emergencies, and coordinate ambulance response.
+                </p>
+
+                <div class="feature-list mt-8 grid gap-3 sm:grid-cols-2">
+                    <div class="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur"><i class="fa-solid fa-bell mr-2 text-red-300"></i> Real-time emergency alerts</div>
+                    <div class="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur"><i class="fa-solid fa-hospital mr-2 text-blue-300"></i> Hospital-specific dashboard</div>
+                    <div class="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur"><i class="fa-solid fa-truck-medical mr-2 text-red-300"></i> Driver assignment and tracking</div>
+                    <div class="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur"><i class="fa-solid fa-shield-heart mr-2 text-blue-300"></i> Independent hospital sessions</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-form-panel flex items-center justify-center px-5 py-10 sm:px-8 lg:px-14">
+            <div class="login-card w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-lifeline sm:p-9 [data-theme=dark]:border-slate-800 [data-theme=dark]:bg-slate-900">
+                <div class="login-heading mb-8 flex items-start gap-4">
+                    <div class="login-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-xl text-blue-700 [data-theme=dark]:bg-blue-950 [data-theme=dark]:text-blue-300"><i class="fa-solid fa-hospital-user"></i></div>
+                    <div>
+                        <p class="eyebrow text-xs font-bold tracking-[0.2em] text-red-600">AUTHORIZED ACCESS</p>
+                        <h2 class="mt-1 text-2xl font-bold text-slate-900 [data-theme=dark]:text-white">Hospital Login</h2>
+                        <p>Use the common demo username and your hospital password.</p>
+                    </div>
+                </div>
+
+                <form id="hospitalLoginForm" class="space-y-5" novalidate>
+                    <div class="form-group space-y-2">
+                        <label for="hospitalUsername" class="block text-sm font-semibold text-slate-700 [data-theme=dark]:text-slate-200">Username</label>
+                        <div class="input-wrapper flex items-center gap-3 rounded-xl border border-slate-300 bg-white px-4 focus-within:border-blue-600 focus-within:ring-4 focus-within:ring-blue-100 [data-theme=dark]:border-slate-700 [data-theme=dark]:bg-slate-950 [data-theme=dark]:focus-within:ring-blue-950">
+                            <i class="fa-solid fa-user-shield"></i>
+                            <input
+                                id="hospitalUsername"
+                                class="w-full border-0 bg-transparent py-3 text-base outline-none placeholder:text-slate-400 [data-theme=dark]:text-white"
+                                type="text"
+                                value="admin"
+                                autocomplete="username"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group space-y-2">
+                        <label for="hospitalPassword" class="block text-sm font-semibold text-slate-700 [data-theme=dark]:text-slate-200">Hospital Password</label>
+                        <div class="input-wrapper flex items-center gap-3 rounded-xl border border-slate-300 bg-white px-4 focus-within:border-blue-600 focus-within:ring-4 focus-within:ring-blue-100 [data-theme=dark]:border-slate-700 [data-theme=dark]:bg-slate-950 [data-theme=dark]:focus-within:ring-blue-950">
+                            <i class="fa-solid fa-lock"></i>
+                            <input
+                                id="hospitalPassword"
+                                class="w-full border-0 bg-transparent py-3 text-base outline-none placeholder:text-slate-400 [data-theme=dark]:text-white"
+                                type="password"
+                                inputmode="numeric"
+                                maxlength="4"
+                                placeholder="Enter 4-digit password"
+                                autocomplete="current-password"
+                                required
+                            >
+                            <button
+                                type="button"
+                                id="toggleHospitalPassword"
+                                class="password-toggle rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-blue-700 [data-theme=dark]:hover:bg-slate-800"
+                                aria-label="Show or hide password"
+                            >
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="loginError" class="login-error min-h-5 text-sm font-medium text-red-600" role="alert"></div>
+
+                    <button id="hospitalLoginButton" type="submit" class="login-button flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-red-600 to-red-700 px-5 py-3.5 font-semibold text-white shadow-lg shadow-red-600/20 transition hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-red-200 disabled:cursor-not-allowed disabled:opacity-60">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Login to Hospital
+                    </button>
+                </form>
+
+                <div class="demo-credentials mt-7 rounded-2xl border border-slate-200 bg-slate-50 p-5 [data-theme=dark]:border-slate-800 [data-theme=dark]:bg-slate-950">
+                    <h3><i class="fa-solid fa-flask"></i> Demo Credentials</h3>
+                    <p>Username for every hospital: <strong>admin</strong></p>
+                    <div class="credential-grid mt-3 grid grid-cols-[1fr_auto] gap-x-5 gap-y-2 text-sm">
+                        <span>Apollo Hospital</span><strong>1111</strong>
+                        <span>Care Hospital</span><strong>2222</strong>
+                        <span>Yashoda Hospital</span><strong>3333</strong>
+                        <span>City Hospital</span><strong>4444</strong>
+                    </div>
+                </div>
+
+                <p class="demo-warning mt-4 flex gap-2 text-xs leading-5 text-slate-500 [data-theme=dark]:text-slate-400">
+                    <i class="fa-solid fa-circle-info"></i>
+                    These client-side passwords are for project demonstration only.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/modules/hospital-login.js"></script>
+<script type="module" src="js/modules/toast.js"></script>
+</body>
+</html>
