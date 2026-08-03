@@ -331,6 +331,25 @@ src="js/modules/emergency.js"></script>
 
 <script type="module" src="js/modules/toast.js"></script>
 <script type="module" src="js/modules/splash.js"></script>
+<script type="module">
+    import {
+        ensureReview1Authentication
+    } from "./js/firebase/review1-auth.js";
+
+    ensureReview1Authentication()
+        .then((user) => {
+            console.log(
+                "Review 1 Firebase ready:",
+                user.uid
+            );
+        })
+        .catch((error) => {
+            console.error(
+                "Review 1 Firebase authentication failed:",
+                error
+            );
+        });
+</script>
 </body>
 
 </html>
