@@ -7,7 +7,9 @@ import {
   doc,
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
+import {
+    ensureReview1Authentication
+} from "../firebase/review1-auth.js";
 let latitude = 17.3850;
 let longitude = 78.4867;
 let unsubscribeEmergencyStatus = null;
