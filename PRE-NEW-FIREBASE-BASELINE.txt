@@ -1,0 +1,31 @@
+LifeLine AI — Complete Code Baseline Before New Firebase Setup
+
+This package preserves the current project code and modules before reconnecting to a new Firebase project.
+
+Included modules:
+- Unified login and role-based authentication UI
+- Patient/user emergency portal
+- Smart AI SOS with GPS and nearest-hospital assignment
+- Hospital emergency panel and alarm
+- Hospital acceptance, driver assignment, dispatch and completion flow
+- Driver 1 / Driver 2 / Driver 3 interfaces and switcher code
+- Driver requests, active trips, completed trips and profile pages
+- In-app ambulance map and navigation
+- Patient timeline
+- Smart queue management
+- Professional command center and analytics
+- Patient management
+- Billing and payment tracking
+- Emergency history
+- AI chatbot and AI helper modules
+- Notification modules
+- React dashboard source and production build
+- Spring Boot REST API module
+- Realtime server module
+- Firebase Functions folder
+- Firestore rules and sample data
+- Responsive/mobile CSS and final UI enhancements
+- Documentation, report, presentation, workflow and architecture files
+
+Important:
+The web application still contains the previous Firebase configuration. During the next setup step, replace only js/firebase/firebase-config.js with the new Firebase web configuration. Do not delete the remaining project files.

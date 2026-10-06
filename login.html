@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        (function () {
+            const savedTheme =
+                localStorage.getItem("lifeline-theme");
+
+            const prefersDark =
+                window.matchMedia &&
+                window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                ).matches;
+
+            document.documentElement.setAttribute(
+                "data-theme",
+                savedTheme ||
+                    (prefersDark ? "dark" : "light")
+            );
+        })();
+    </script>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LifeLine AI — Secure Login</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link
+        rel="stylesheet"
+        href="css/final-enhancements.css"
+    >
+
+    <style>
+        .auth-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin: 14px 0 20px;
+            font-size: 14px;
+        }
+
+        .remember-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .remember-option input {
+            width: 17px;
+            height: 17px;
+            min-height: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 48px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            min-height: auto;
+            padding: 0;
+            border: none;
+            background: transparent;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .login-message {
+            display: none;
+            margin: 0 0 16px;
+            padding: 11px 13px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .login-message.show {
+            display: block;
+        }
+
+        .login-message.error {
+            border: 1px solid #fecaca;
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+
+        .login-message.success {
+            border: 1px solid #bbf7d0;
+            background: #f0fdf4;
+            color: #15803d;
+        }
+
+        .login-btn:disabled {
+            cursor: wait;
+            opacity: 0.7;
+        }
+
+        .security-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            margin-top: 16px;
+            color: #64748b;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">
+                🚑
+
+                <h1>LifeLine AI</h1>
+
+                <p>Secure Role-Based Login</p>
+            </div>
+
+            <div
+                id="loginMessage"
+                class="login-message"
+                role="alert"
+            ></div>
+
+            <form id="loginForm" novalidate>
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email address"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group password-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="password-toggle"
+                        aria-label="Show password"
+                    >
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="auth-options">
+                    <label class="remember-option">
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span>Remember email and session</span>
+                    </label>
+
+                    <span>
+                        Protected access
+                    </span>
+                </div>
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="login-btn"
+                >
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Sign In
+                </button>
+            </form>
+
+            <div class="security-note">
+                <i class="fa-solid fa-shield-halved"></i>
+                Firebase secured authentication
+            </div>
+
+            <div style="margin-top: 14px; text-align: center;">
+                <a href="hospital-login.html" style="color: #dc2626; text-decoration: none; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+                    <i class="fa-solid fa-hospital"></i> Hospital Staff Login (4-Digit PIN)
+                </a>
+            </div>
+
+            <p class="footer">
+                Emergency Response & Hospital ERP
+            </p>
+        </div>
+    </div>
+
+    <script
+        type="module"
+        src="js/auth/login.js"
+    ></script>
+<script
+    type="module"
+    src="./js/auth/auth-ui.js"
+></script>
+</body>
+</html>

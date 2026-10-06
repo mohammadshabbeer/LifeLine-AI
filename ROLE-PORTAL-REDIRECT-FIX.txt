@@ -1,0 +1,14 @@
+LifeLine AI - Role Portal Redirect Fix
+
+Fixed behaviour:
+- index.html accepts PATIENT only.
+- hospital.html accepts HOSPITAL and ADMIN.
+- driver.html accepts DRIVER and ADMIN.
+- If another role is still remembered by Firebase, that account is signed out.
+- The requested page then opens the correct role-specific login instead of redirecting to index.html.
+
+Expected:
+PATIENT -> index.html
+HOSPITAL -> hospital.html
+DRIVER -> driver.html
+ADMIN -> dashboard.html

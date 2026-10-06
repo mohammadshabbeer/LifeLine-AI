@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+(function () {
+    const savedTheme =
+        localStorage.getItem("lifeline-theme");
+
+    const prefersDark =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+    const theme =
+        savedTheme ||
+        (prefersDark ? "dark" : "light");
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+})();
+</script>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LifeLine Ambulance Tracking</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css">
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
+<link rel="stylesheet"
+href="css/ambulance.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/professional-ui.css">
+<link rel="stylesheet" href="css/final-enhancements.css">
+</head>
+
+<body>
+
+<div id="hospitalFleetView" class="hospital-fleet-section" style="display:none;">
+    <header class="fleet-header">
+        <div class="fleet-title-wrap">
+            <a href="hospital.html" class="back-hospital-btn"><i class="fa-solid fa-arrow-left"></i> Hospital Panel</a>
+            <h1>🚑 Hospital Ambulance Fleet & Drivers</h1>
+            <p>Real-time driver roster, experience, emergency history & vehicle status.</p>
+        </div>
+        <div class="fleet-header-actions">
+            <span class="live-fleet-badge"><span class="pulse"></span> LIVE ROSTER</span>
+            <button type="button" class="theme-toggle" data-theme-toggle>
+                <span class="theme-toggle-icon">🌙</span>
+                <span class="theme-toggle-text">Dark Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="fleet-stats-grid">
+        <div class="fleet-stat-card">
+            <div class="stat-icon red"><i class="fa-solid fa-truck-medical"></i></div>
+            <div>
+                <small>Hospital Fleet</small>
+                <strong id="fleetTotal">3 Units</strong>
+                <span>Registered Ambulances</span>
+            </div>
+        </div>
+        <div class="fleet-stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-user-check"></i></div>
+            <div>
+                <small>Available Drivers</small>
+                <strong id="fleetAvailable">0</strong>
+                <span>Ready for dispatch</span>
+            </div>
+        </div>
+        <div class="fleet-stat-card">
+            <div class="stat-icon orange"><i class="fa-solid fa-hourglass-half"></i></div>
+            <div>
+                <small>On Duty / Busy</small>
+                <strong id="fleetBusy">0</strong>
+                <span>Active trips</span>
+            </div>
+        </div>
+        <div class="fleet-stat-card">
+            <div class="stat-icon blue"><i class="fa-solid fa-shield-heart"></i></div>
+            <div>
+                <small>Total Emergencies Handled</small>
+                <strong id="fleetTotalTrips">455</strong>
+                <span>Combined experience</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="fleet-roster-container">
+        <div class="roster-heading">
+            <h2><i class="fa-solid fa-id-card"></i> Hospital Drivers & Paramedic Roster</h2>
+            <p>Live driver profiles, vehicle specs, experience details and real-time emergency assignments.</p>
+        </div>
+
+        <div id="driversRosterGrid" class="drivers-roster-grid">
+            <!-- Dynamic Driver Cards populated by ambulance.js -->
+        </div>
+    </section>
+</div>
+
+<div id="liveTrackingView" style="display:none;">
+    <header class="topbar">
+        <div class="logo">
+            🚑 LifeLine Emergency Tracking
+            <button type="button" class="theme-toggle" data-theme-toggle>
+                <span class="theme-toggle-icon">🌙</span>
+                <span class="theme-toggle-text">Dark Mode</span>
+            </button>
+        </div>
+
+        <div class="live">
+            <span class="pulse"></span>
+            LIVE TRACKING
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <div class="info-card">
+            <h3>Status</h3>
+            <p id="status">Preparing...</p>
+        </div>
+
+        <div class="info-card">
+            <h3>Distance</h3>
+            <p id="distance">0 KM</p>
+        </div>
+
+        <div class="info-card">
+            <h3>ETA</h3>
+            <p id="eta">Calculating...</p>
+        </div>
+
+        <div class="info-card">
+            <h3>Speed</h3>
+            <p id="speed">40 km/h</p>
+        </div>
+    </section>
+
+    <section class="progressSection">
+        <div class="progressText">
+            Hospital
+            <span id="progressPercent">0%</span>
+            Patient
+        </div>
+
+        <div class="progressBar">
+            <div id="progressFill"></div>
+        </div>
+    </section>
+
+    <div id="map"></div>
+
+    <section class="bottom">
+        <div class="driver">
+            <h2>🚑 Ambulance Driver</h2>
+            <p><b>Name:</b> <span id="driverName"></span></p>
+            <p><b>Phone:</b> <span id="driverPhone"></span></p>
+            <p><b>Vehicle No:</b> <span id="driverVehicle"></span></p>
+            <p><b>License:</b> <span id="driverLicense"></span></p>
+            <p><b>Experience:</b> <span id="driverExperience"></span></p>
+            <p><b>Status:</b> <span id="driverStatus" class="statusBadge"></span></p>
+        </div>
+
+        <div class="patient">
+            <h2>🧑 Patient</h2>
+            <p id="patientName"></p>
+            <p id="patientEmergency"></p>
+            <p id="patientHospital"></p>
+        </div>
+    </section>
+
+    <div class="buttons">
+        <button id="arrivedBtn">📍 I Have Arrived</button>
+        <button id="returnBtn">🏠 Return Driver Home</button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+<script type="module" src="js/modules/ambulance.js"></script>
+
+<link rel="stylesheet" href="css/hospital-assistant.css">
+
+<button id="openAssistant">🤖</button>
+
+<div id="hospitalAssistant">
+
+    <div class="assistantHeader">
+
+        🤖 LifeLine AI Assistant
+
+        <button id="closeAssistant">×</button>
+
+    </div>
+
+    <div class="quickButtons">
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Dashboard'">Dashboard</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Patients'">Patients</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open Billing'">Billing</button>
+
+        <button onclick="document.getElementById('hospitalChatInput').value='Open History'">History</button>
+
+    </div>
+
+    <div id="hospitalChatMessages">
+
+        <div class="bot">
+
+            👋 Welcome to LifeLine AI Assistant.
+
+        </div>
+
+    </div>
+
+    <div class="assistantFooter">
+
+        <input
+        id="hospitalChatInput"
+        placeholder="Ask anything...">
+
+        <button id="hospitalSendBtn">
+
+            Send
+
+        </button>
+
+    </div>
+
+</div>
+
+<script type="module" src="ai/hospital-assistant.js"></script>
+<script type="module" src="js/modules/theme.js"></script>
+<script type="module" src="js/modules/toast.js"></script>
+<script
+    type="module"
+    src="./js/auth/auth-ui.js"
+></script>
+</body>
+
+</html>

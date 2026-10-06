@@ -1,0 +1,86 @@
+.billing-form{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:15px;
+
+margin:25px;
+
+}
+
+.billing-form input,
+.billing-form select{
+
+padding:14px;
+
+border-radius:10px;
+
+border:1px solid #ddd;
+
+font-size:15px;
+
+}
+
+.buttons{
+
+grid-column:1/-1;
+
+display:flex;
+
+gap:15px;
+
+}
+
+.buttons button{
+
+padding:14px 25px;
+
+background:#d62828;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:15px;
+
+}
+
+table{
+
+width:100%;
+
+margin-top:30px;
+
+border-collapse:collapse;
+
+background:white;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+th{
+
+background:#d62828;
+
+color:white;
+
+padding:14px;
+
+}
+
+td{
+
+padding:12px;
+
+text-align:center;
+
+border-bottom:1px solid #eee;
+
+}

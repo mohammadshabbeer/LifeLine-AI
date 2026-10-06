@@ -1,0 +1,35 @@
+LifeLine AI - Final Patient / Hospital / Driver Connection Fix
+
+FIXED IN THIS BUILD
+1. Hospital, driver and patient modules start only after Firebase authentication and role validation finish.
+2. Smart SOS/new emergencies trigger the hospital listener immediately.
+3. If browser autoplay blocks sound, a red Tap-to-enable-alarm banner appears.
+4. Assign Driver updates both the alert and driver documents atomically.
+5. A driver assignment notification is also created.
+6. Driver dashboards compare assigned driver IDs safely and update live.
+7. Driver 1, Driver 2 and Driver 3 remain available.
+8. SOS patient location opens in the in-project ambulance map.
+
+REQUIRED FIREBASE STEP
+Copy database/firestore.rules into Firebase Console > Firestore Database > Rules and click Publish.
+
+REQUIRED USER PROFILES
+Every driver Firebase account must have users/{UID}:
+role = DRIVER (String)
+active = true (Boolean)
+driverId = driver1 / driver2 / driver3 (String)
+
+Every hospital account must have:
+role = HOSPITAL
+active = true
+hospitalId = hospital1 / hospital2 / hospital3 / hospital4
+hospitalName = exact hospital name used by alerts
+
+TEST ORDER
+1. Open hospital.html and sign in as the target hospital. Click once anywhere or press Alarm ON to unlock sound.
+2. In a separate browser/incognito profile, open index.html and sign in as PATIENT.
+3. Send Smart SOS. The matching hospital receives the card and alarm/visual alarm immediately.
+4. Hospital accepts and assigns driver1/driver2/driver3.
+5. In another browser/incognito profile, open driver-requests.html and sign in with that driver's Firebase account.
+6. The assignment appears automatically and the driver alarm/visual alarm activates.
+7. Driver accepts, navigates using ambulance-map.html, and updates trip status.

@@ -1,0 +1,724 @@
+/* ===========================
+   LifeLine Ambulance Tracking
+=========================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",sans-serif;
+}
+
+body{
+
+background:#eef5fb;
+
+color:#222;
+
+}
+
+/* ===========================
+Header
+=========================== */
+
+.topbar{
+
+height:70px;
+
+background:linear-gradient(90deg,#0B2545,#134074);
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 30px;
+
+color:#fff;
+
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+font-size:24px;
+
+font-weight:bold;
+
+}
+
+.live{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-weight:bold;
+
+}
+
+.pulse{
+
+width:14px;
+
+height:14px;
+
+background:#00ff44;
+
+border-radius:50%;
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+50%{
+
+transform:scale(1.6);
+
+opacity:.4;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+/* ===========================
+Dashboard Cards
+=========================== */
+
+.dashboard{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+padding:25px;
+
+}
+
+.info-card{
+
+background:rgba(255,255,255,.75);
+
+backdrop-filter:blur(10px);
+
+border-radius:18px;
+
+padding:25px;
+
+text-align:center;
+
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+transition:.3s;
+
+}
+
+.info-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.info-card h3{
+
+color:#0B2545;
+
+margin-bottom:12px;
+
+}
+
+.info-card p{
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#D62828;
+
+}
+
+/* ===========================
+Progress
+=========================== */
+
+.progressSection{
+
+padding:0 25px 20px;
+
+}
+
+.progressText{
+
+display:flex;
+
+justify-content:space-between;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+}
+
+.progressBar{
+
+height:18px;
+
+background:#ddd;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+#progressFill{
+
+width:0%;
+
+height:100%;
+
+background:linear-gradient(90deg,#16a34a,#22c55e);
+
+transition:width .5s;
+
+}
+
+/* ===========================
+Map
+=========================== */
+
+#map{
+
+height:520px;
+
+margin:25px;
+
+border-radius:20px;
+
+overflow:hidden;
+
+box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+}
+
+/* ===========================
+Bottom Cards
+=========================== */
+
+.bottom{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+
+gap:25px;
+
+padding:25px;
+
+}
+
+.driver,
+.patient{
+
+background:#fff;
+
+border-radius:18px;
+
+padding:25px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+.driver h2,
+.patient h2{
+
+margin-bottom:20px;
+
+color:#0B2545;
+
+}
+
+.driver p,
+.patient p{
+
+margin:10px 0;
+
+font-size:17px;
+
+}
+
+/* ===========================
+Buttons
+=========================== */
+
+.buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+padding:30px;
+
+}
+
+.buttons button{
+
+padding:15px 35px;
+
+font-size:17px;
+
+font-weight:bold;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+#completeBtn{
+
+background:#16a34a;
+
+color:#fff;
+
+}
+
+#completeBtn:hover{
+
+background:#15803d;
+
+transform:scale(1.05);
+
+}
+
+#returnBtn{
+
+background:#0B2545;
+
+color:#fff;
+
+}
+
+#returnBtn:hover{
+
+background:#134074;
+
+transform:scale(1.05);
+
+}
+
+/* ===========================
+Responsive
+=========================== */
+
+@media(max-width:768px){
+
+.topbar{
+
+flex-direction:column;
+
+height:auto;
+
+padding:15px;
+
+gap:10px;
+
+}
+
+#map{
+
+height:400px;
+
+margin:15px;
+
+}
+
+.dashboard{
+
+grid-template-columns:1fr;
+
+}
+
+.bottom{
+
+grid-template-columns:1fr;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+padding:20px;
+
+}
+
+.buttons button{
+
+width:100%;
+
+}
+
+}
+
+
+.statusBadge{
+
+padding:6px 14px;
+
+background:#22c55e;
+
+color:white;
+
+border-radius:20px;
+
+font-weight:bold;
+
+}
+
+/* ===========================
+   Hospital Fleet & Driver Roster
+=========================== */
+
+.hospital-fleet-section {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.fleet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 30px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.18);
+    margin-bottom: 24px;
+}
+
+.fleet-title-wrap h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 6px 0 4px;
+}
+
+.fleet-title-wrap p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.back-hospital-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #38bdf8;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+.back-hospital-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.fleet-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.live-fleet-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #4ade80;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.fleet-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.fleet-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-theme="dark"] .fleet-stat-card {
+    background: #0f172a;
+    border-color: rgba(51, 65, 85, 0.6);
+    color: #f8fafc;
+}
+
+.fleet-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+.stat-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    font-size: 22px;
+}
+
+.stat-icon.red { background: #fee2e2; color: #dc2626; }
+.stat-icon.green { background: #dcfce7; color: #16a34a; }
+.stat-icon.orange { background: #ffedd5; color: #ea580c; }
+.stat-icon.blue { background: #e0f2fe; color: #0284c7; }
+
+.fleet-stat-card small {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.fleet-stat-card strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 2px 0;
+}
+
+[data-theme="dark"] .fleet-stat-card strong {
+    color: #f8fafc;
+}
+
+.fleet-stat-card span {
+    display: block;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.fleet-roster-container {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+[data-theme="dark"] .fleet-roster-container {
+    background: #0f172a;
+    border-color: rgba(51, 65, 85, 0.6);
+    color: #f8fafc;
+}
+
+.roster-heading {
+    margin-bottom: 24px;
+}
+
+.roster-heading h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+[data-theme="dark"] .roster-heading h2 {
+    color: #f8fafc;
+}
+
+.roster-heading p {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.drivers-roster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 22px;
+}
+
+.roster-driver-card {
+    position: relative;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+[data-theme="dark"] .roster-driver-card {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.roster-driver-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+}
+
+.driver-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+}
+
+[data-theme="dark"] .driver-card-header {
+    border-bottom-color: #334155;
+}
+
+.driver-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #2563eb, #0284c7);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.driver-info-main h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+[data-theme="dark"] .driver-info-main h3 {
+    color: #f8fafc;
+}
+
+.driver-id-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #e0f2fe;
+    color: #0284c7;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 6px;
+    margin-top: 4px;
+}
+
+.driver-details-list {
+    display: grid;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.driver-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.driver-detail-row label {
+    color: #64748b;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.driver-detail-row span {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+[data-theme="dark"] .driver-detail-row span {
+    color: #f8fafc;
+}
+
+.roster-status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.roster-status-badge.available { background: #dcfce7; color: #15803d; }
+.roster-status-badge.busy { background: #ffedd5; color: #c2410c; }
+.roster-status-badge.unavailable { background: #fee2e2; color: #b91c1c; }
+.roster-status-badge.leave { background: #fef3c7; color: #b45309; }
+
+.driver-track-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 18px;
+    padding: 10px 16px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.driver-track-link:hover {
+    background: #1d4ed8;
+}

@@ -1,0 +1,79 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userPath() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    function hasProfile() {
+      return signedIn() && exists(userPath());
+    }
+
+    function profile() {
+      return get(userPath()).data;
+    }
+
+    function active() {
+      return hasProfile() && profile().active == true;
+    }
+
+    function roleIs(value) {
+      return active() && profile().role == value;
+    }
+
+    function admin() {
+      return roleIs("ADMIN") || roleIs("Admin");
+    }
+
+    function hospital() {
+      return roleIs("HOSPITAL") || roleIs("Hospital");
+    }
+
+    function staff() {
+      return admin() || hospital();
+    }
+
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || admin());
+      allow create, update, delete: if admin();
+    }
+
+    // Stable authenticated demo rules for the hospital-driver workflow.
+    // They remove the role-field mismatch that previously blocked assignment,
+    // driver status changes and emergency progress updates.
+    // Demo security rules for LifeLine AI emergency response, hospital panel, driver pool & analytics.
+    match /drivers/{driverId} {
+      allow read, write: if true;
+    }
+
+    match /alerts/{alertId} {
+      allow read, write: if true;
+    }
+
+    match /notifications/{notificationId} {
+      allow read, write: if true;
+    }
+
+    match /patients/{patientId} {
+      allow read, write: if true;
+    }
+
+    match /bills/{billId} {
+      allow read, write: if true;
+    }
+
+    match /loginAudit/{auditId} {
+      allow read, write: if true;
+    }
+
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

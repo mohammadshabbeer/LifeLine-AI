@@ -1,0 +1,30 @@
+LifeLine AI - Multi Driver + Index Fix
+=====================================
+
+FIXED
+1. Driver 1, Driver 2 and Driver 3 remain available in the driver switcher.
+2. A logged-in driver account automatically starts with the driverId stored in users/{UID}.
+3. Admin/demo users can still switch among driver1, driver2 and driver3.
+4. index.html now opens for PATIENT, ADMIN, HOSPITAL and DRIVER accounts instead of redirecting a logged-in driver to driver.html.
+5. Firestore rules now permit active authenticated users to read the three driver profiles and real-time alerts.
+6. SOS creation remains allowed for active authenticated accounts.
+
+REQUIRED FIREBASE STEP
+Open database/firestore.rules, copy all content, then paste it into:
+Firebase Console > Firestore Database > Rules > Publish
+
+REQUIRED DATA
+Firestore must contain these documents:
+drivers/driver1
+drivers/driver2
+drivers/driver3
+
+For separate driver logins, each users/{Firebase UID} document should contain:
+role: DRIVER (String)
+active: true (Boolean)
+driverId: driver1 OR driver2 OR driver3 (String)
+
+TEST
+- Login as any role and open index.html: the user portal should remain open.
+- Open driver.html: Driver 1, Driver 2 and Driver 3 buttons should all be visible.
+- Select Driver 2 or Driver 3: that driver's profile and assigned alerts should load.

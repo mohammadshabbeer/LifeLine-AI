@@ -1,0 +1,24 @@
+LIFELINE AI - FINAL DRIVER FIX
+
+ROOT CAUSE FOUND FROM FIREBASE SCREENSHOTS:
+1. The user role is stored as Driver, while the previous rules expected DRIVER.
+2. The driver link field is stored as driverID, while the project code expected driverId.
+
+THE PROJECT NOW SUPPORTS BOTH FORMATS.
+
+MANDATORY FIREBASE STEP:
+1. Open database/firestore.rules from this project.
+2. Copy the complete file.
+3. Firebase Console > Firestore Database > Rules.
+4. Replace all rules and click Publish.
+5. Sign out of every LifeLine AI tab.
+6. Close all tabs, reopen driver.html with Live Server, and press Ctrl+F5.
+7. Login as driver1@lifeline.ai.
+
+RECOMMENDED FIREBASE CLEANUP (NOT REQUIRED FOR THIS BUILD):
+Change role from Driver to DRIVER and rename driverID to driverId.
+
+EXPECTED RESULT:
+- Driver status Available/Busy/Unavailable/Leave updates drivers/driver1.
+- Hospital assignment appears on the linked driver page.
+- Driver can accept, reject, navigate, arrive, and complete.

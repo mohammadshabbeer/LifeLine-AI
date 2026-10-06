@@ -1,0 +1,331 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+}
+
+.hospital-login-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(420px, 0.9fr);
+}
+
+.login-brand-panel {
+    display: flex;
+    align-items: center;
+    padding: 64px;
+    color: #fff;
+    background:
+        radial-gradient(circle at top right, rgba(255,255,255,.18), transparent 35%),
+        linear-gradient(145deg, #a40f1b, #d62828 50%, #ef476f);
+}
+
+.brand-content {
+    max-width: 640px;
+}
+
+.brand-logo {
+    width: 78px;
+    height: 78px;
+    display: grid;
+    place-items: center;
+    border-radius: 24px;
+    font-size: 40px;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.25);
+    box-shadow: 0 20px 40px rgba(60,0,0,.2);
+}
+
+.brand-label {
+    margin: 24px 0 8px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.brand-content h1 {
+    margin: 0;
+    max-width: 600px;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.06;
+}
+
+.brand-description {
+    margin: 24px 0 32px;
+    max-width: 580px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: rgba(255,255,255,.88);
+}
+
+.feature-list {
+    display: grid;
+    gap: 14px;
+}
+
+.feature-list div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 650;
+}
+
+.feature-list i {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(255,255,255,.15);
+}
+
+.login-form-panel {
+    display: grid;
+    place-items: center;
+    padding: 40px;
+}
+
+.login-card {
+    width: min(100%, 520px);
+    padding: 36px;
+    border-radius: 26px;
+    background: #fff;
+    box-shadow: 0 28px 70px rgba(25, 39, 70, .14);
+}
+
+.login-heading {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+
+.login-icon {
+    flex: 0 0 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 24px;
+    background: linear-gradient(135deg, #d62828, #ef476f);
+}
+
+.eyebrow {
+    margin: 0 0 6px;
+    color: #d62828;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .14em;
+}
+
+.login-heading h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.login-heading p:last-child {
+    margin: 8px 0 0;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper > i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8b95a7;
+}
+
+.input-wrapper input {
+    width: 100%;
+    min-height: 52px;
+    padding: 0 48px 0 46px;
+    border: 1px solid #d9dfeb;
+    border-radius: 13px;
+    background: #f9fbfd;
+    font-size: 16px;
+    outline: none;
+    transition: .2s ease;
+}
+
+.input-wrapper input:focus {
+    border-color: #d62828;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(214,40,40,.1);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.login-error {
+    display: none;
+    margin: 4px 0 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: #b42318;
+    background: #fff0ef;
+    border: 1px solid #ffd2cf;
+    font-weight: 650;
+}
+
+.login-error.show {
+    display: block;
+}
+
+.login-button {
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 13px;
+    color: #fff;
+    background: linear-gradient(135deg, #c91f2b, #e63946);
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(214,40,40,.22);
+}
+
+.login-button:disabled {
+    opacity: .7;
+    cursor: wait;
+}
+
+.demo-credentials {
+    margin-top: 26px;
+    padding: 18px;
+    border-radius: 16px;
+    background: #f7f9fc;
+    border: 1px solid #e7ebf2;
+}
+
+.demo-credentials h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+
+.demo-credentials p {
+    margin: 0 0 14px;
+    color: #667085;
+}
+
+.credential-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 9px 18px;
+    font-size: 14px;
+}
+
+.credential-grid strong {
+    color: #d62828;
+    letter-spacing: .08em;
+}
+
+.demo-warning {
+    display: flex;
+    gap: 8px;
+    margin: 16px 2px 0;
+    color: #7a8495;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+html[data-theme="dark"] body {
+    background: #0d1422;
+    color: #eef2f8;
+}
+
+html[data-theme="dark"] .login-card {
+    background: #151f30;
+    box-shadow: 0 28px 70px rgba(0,0,0,.32);
+}
+
+html[data-theme="dark"] .login-heading p:last-child,
+html[data-theme="dark"] .demo-credentials p,
+html[data-theme="dark"] .demo-warning {
+    color: #aab4c4;
+}
+
+html[data-theme="dark"] .input-wrapper input,
+html[data-theme="dark"] .demo-credentials {
+    color: #edf2f8;
+    background: #101827;
+    border-color: #29364b;
+}
+
+@media (max-width: 900px) {
+    .hospital-login-page {
+        grid-template-columns: 1fr;
+    }
+
+    .login-brand-panel {
+        padding: 42px 28px;
+    }
+
+    .brand-content h1 {
+        font-size: 40px;
+    }
+
+    .login-form-panel {
+        padding: 28px 18px 42px;
+    }
+}
+
+@media (max-width: 520px) {
+    .login-brand-panel {
+        padding: 32px 20px;
+    }
+
+    .brand-content h1 {
+        font-size: 32px;
+    }
+
+    .brand-description {
+        font-size: 16px;
+    }
+
+    .login-card {
+        padding: 24px 18px;
+        border-radius: 20px;
+    }
+
+    .login-heading {
+        flex-direction: column;
+    }
+}

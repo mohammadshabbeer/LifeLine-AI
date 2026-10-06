@@ -1,0 +1,20 @@
+LifeLine AI — SOS Location and Driver Fix
+
+FIXES INCLUDED
+1. Smart SOS now stores location in all compatible formats:
+   latitude/longitude, lat/lng, coordinates, address and Google Maps URL.
+2. Hospital emergency cards show the detected address and an Open Patient Location button.
+3. Ambulance tracking reads the exact driver assigned by the hospital.
+4. Ambulance tracking supports all four hospital names used by Smart SOS.
+5. SOS emergencies continue through the normal flow:
+   Pending → Accepted → Driver Assigned → Driver Accepted → Dispatched → Arrived → Completed.
+
+TEST
+1. Login as PATIENT and send Smart SOS.
+2. Open the nearest hospital account.
+3. Click Open Patient Location.
+4. Click Accept.
+5. Click Assign Driver and enter an available driver document ID, for example driver1.
+6. Login as that driver and accept the request.
+7. Hospital clicks Dispatch.
+8. Driver opens Continue Navigation.

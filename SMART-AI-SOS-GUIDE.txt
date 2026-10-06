@@ -1,0 +1,28 @@
+LIFELINE AI - SMART ONE-TAP SOS UPGRADE
+========================================
+
+WHAT WAS ADDED
+1. A large Smart AI SOS button on the patient portal.
+2. Five-second cancellation countdown to prevent accidental alerts.
+3. High-accuracy GPS detection.
+4. Automatic reverse geocoding with coordinate fallback.
+5. Nearest-hospital selection using geographic distance.
+6. Automatic unknown-patient/limited-details emergency creation.
+7. Critical severity, score 100, AI triage metadata and immediate-response flag.
+8. Existing hospital acceptance, driver assignment, dispatch, arrival and completion flow is reused.
+9. Existing live status tracker updates automatically through Firestore.
+10. SOS alerts are visually highlighted in the hospital panel.
+
+TEST
+- Open login.html with Live Server.
+- Login as PATIENT or ADMIN.
+- Open index.html.
+- Press Smart AI SOS, allow location, and wait or press Send Now.
+- Login to the selected hospital in another browser/profile.
+- The critical SOS appears automatically.
+- Accept it, assign a driver, and complete the same normal workflow.
+
+IMPORTANT
+- Browsers allow accurate location only on localhost or HTTPS.
+- The user must grant location permission.
+- No existing emergency, hospital, driver, billing, authentication or analytics code was removed.

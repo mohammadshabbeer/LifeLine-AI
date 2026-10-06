@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+(function () {
+    const savedTheme =
+        localStorage.getItem("lifeline-theme");
+
+    const prefersDark =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+    const theme =
+        savedTheme ||
+        (prefersDark ? "dark" : "light");
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        theme
+    );
+})();
+</script>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>LifeLine AI | Emergency Response</title>
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Leaflet -->
+
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/emergency.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/chatbot.css">
+<link rel="stylesheet" href="css/user-portal.css">
+<link rel="stylesheet" href="css/professional-ui.css">
+<link rel="stylesheet" href="css/final-enhancements.css">
+<link rel="stylesheet" href="css/smart-sos.css">
+</head>
+
+<body>
+
+<header>
+
+ <nav>
+
+    <div class="logo">
+
+        🚑 LifeLine AI
+
+    </div>
+
+    <div class="nav-actions">
+
+        <button
+            type="button"
+            class="theme-toggle"
+            data-theme-toggle
+        >
+
+            <span class="theme-toggle-icon">
+                🌙
+            </span>
+
+            <span class="theme-toggle-text">
+                Dark Mode
+            </span>
+
+        </button>
+
+
+    </div>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+    <h1>
+
+        AI Powered Emergency Response System
+
+    </h1>
+
+    <p>
+
+        Saving Lives Faster with Artificial Intelligence
+
+    </p>
+
+</section>
+
+<section class="container">
+
+<div class="left">
+
+<div class="smart-sos-panel" aria-labelledby="smartSosTitle">
+
+    <div class="smart-sos-header">
+        <div>
+            <h2 id="smartSosTitle">🆘 Smart AI SOS</h2>
+            <p>Unable to type? One tap detects your location and sends a critical request to the nearest hospital.</p>
+        </div>
+        <span class="sos-ai-badge">AI Assisted</span>
+    </div>
+
+    <button type="button" id="smartSosBtn" class="smart-sos-button" aria-label="Send smart SOS emergency">
+        <span class="sos-button-content">
+            <strong>SOS</strong>
+            <span>ONE-TAP HELP</span>
+        </span>
+    </button>
+
+    <p class="smart-sos-note">📍 Location permission is required. A 5-second cancellation window prevents accidental alerts.</p>
+    <div id="sosState" class="sos-state" role="status" aria-live="polite"></div>
+
+</div>
+
+<h2>
+
+Emergency Request
+
+</h2>
+
+<form id="emergencyForm">
+
+<input
+type="text"
+id="name"
+placeholder="Patient Name"
+required>
+
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number"
+required>
+
+<select id="emergencyType">
+
+<option>Road Accident</option>
+
+<option>Heart Attack</option>
+
+<option>Stroke</option>
+
+<option>Pregnancy</option>
+
+<option>Fire Injury</option>
+
+<option>Other</option>
+
+</select>
+
+<textarea
+id="symptoms"
+placeholder="Describe Symptoms"
+rows="4"></textarea>
+
+<input
+type="text"
+id="location"
+placeholder="Current Location"
+readonly>
+
+<select id="hospital" required>
+
+<option value="City Hospital">City Hospital</option>
+
+<option value="Apollo Hospital">Apollo Hospital</option>
+
+<option value="Care Hospital">Care Hospital</option>
+
+<option value="Yashoda Hospital">Yashoda Hospital</option>
+
+</select>
+
+<div class="buttons">
+
+<button
+type="button"
+id="gpsBtn">
+
+📍 Detect Location
+
+</button>
+
+<button
+type="submit">
+
+🚨 Send Emergency
+
+</button>
+
+</div>
+
+</form>
+<div id="statusCard" class="statusCard">
+
+<h2>🚑 Live Emergency Status</h2>
+
+<p id="liveStatus">
+
+Waiting for emergency...
+
+</p>
+
+<div class="tracker">
+
+<div class="step active" id="stepPending">
+
+<div class="circle">1</div>
+
+<p>Request Sent</p>
+
+</div>
+
+<div class="line" id="line1"></div>
+
+<div class="step" id="stepAccepted">
+
+<div class="circle">2</div>
+
+<p>Accepted</p>
+
+</div>
+
+<div class="line" id="line2"></div>
+
+<div class="step" id="stepDispatch">
+
+<div class="circle">3</div>
+
+<p>Dispatched</p>
+
+</div>
+
+<div class="line" id="line3"></div>
+
+<div class="step" id="stepArrived">
+
+<div class="circle">4</div>
+
+<p>Arrived</p>
+
+</div>
+
+<div class="line" id="line4"></div>
+
+<div class="step" id="stepCompleted">
+
+<div class="circle">5</div>
+
+<p>Completed</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="right">
+
+<div id="map"></div>
+
+</div>
+
+</section>
+
+<!-- Smart SOS confirmation -->
+<div id="sosConfirmOverlay" class="sos-overlay" aria-hidden="true">
+    <div class="sos-confirm-card" role="dialog" aria-modal="true" aria-labelledby="sosConfirmTitle">
+        <div class="sos-confirm-icon">🆘</div>
+        <h3 id="sosConfirmTitle">Send Emergency SOS?</h3>
+        <p>LifeLine AI will detect your location, choose the nearest hospital, and create a critical emergency for an unknown patient.</p>
+        <div id="sosCountdown" class="sos-countdown">5</div>
+        <div class="sos-confirm-actions">
+            <button type="button" id="sosSendNow" class="sos-send-now">Send Now</button>
+            <button type="button" id="sosCancel" class="sos-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Leaflet -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+
+<!-- ===========================
+     AI CHATBOT
+=========================== -->
+
+<div id="chatbotBtn">
+
+    🤖
+
+</div>
+
+<div id="chatbot">
+
+    <div class="chat-header">
+
+        <h3>LifeLine AI Assistant</h3>
+
+        <button id="closeChat">✖</button>
+
+    </div>
+
+    <div id="chatMessages">
+
+        <div class="bot">
+
+            👋 Hello!
+
+            I'm your AI Emergency Assistant.
+
+            Describe your medical situation in simple language.
+
+        </div>
+
+    </div>
+
+    <div class="chat-input">
+
+        <input
+            type="text"
+            id="userInput"
+            placeholder="Describe your emergency...">
+
+        <button id="sendBtn">
+
+            Send
+
+        </button><div id="emergencyAction" style="display:none; padding:10px; text-align:center;">
+    <button id="sendEmergencyBtn" class="danger-btn">
+        🚑 Send Emergency Request
+    </button>
+</div>
+
+
+    </div>
+
+</div>
+
+<script type="module" src="js/modules/chatbot.js"></script>
+
+<script type="module" src="js/modules/theme.js"></script>
+
+<script type="module" src="js/modules/toast.js"></script>
+<script type="module" src="js/modules/splash.js"></script>
+<script type="module">
+    import { protectPage } from "./js/auth/auth-guard.js";
+
+    window.addEventListener(
+        "lifeline-auth-ready",
+        () => import("./js/modules/emergency.js"),
+        { once: true }
+    );
+
+    protectPage(["PATIENT", "HOSPITAL", "DRIVER", "ADMIN"]);
+</script>
+<script
+    type="module"
+    src="./js/auth/auth-ui.js"
+></script>
+</body>
+
+</html>

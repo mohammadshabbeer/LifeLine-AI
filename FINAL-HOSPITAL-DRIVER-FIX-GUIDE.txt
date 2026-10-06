@@ -1,0 +1,69 @@
+LIFELINE AI - FINAL HOSPITAL TO DRIVER FIX
+==========================================
+
+WHAT WAS CHANGED
+----------------
+1. Patient/SOS to hospital code was preserved.
+2. Hospital assignment now writes all compatible fields:
+   driverId, assignedDriverId, assignedDriver, driverAssigned,
+   driverStatus, assignedAt and assignedHospital.
+3. Driver assignment also reserves drivers/{driverId} as Busy.
+4. Driver code was rebuilt cleanly and now:
+   - starts only after authentication,
+   - uses the authenticated driverId,
+   - listens to assigned alerts in real time,
+   - rings the alarm for a waiting assignment,
+   - supports Accept, Reject, Start Trip, Arrived and Complete,
+   - updates the driver status dropdown in Firestore,
+   - returns the driver to Available after completion.
+5. Driver 1, Driver 2 and Driver 3 remain available for ADMIN demo switching.
+6. Normal DRIVER accounts cannot switch to another driver.
+7. Notification logging cannot cancel a successful assignment.
+
+MANDATORY FIREBASE STEP
+-----------------------
+Open database/firestore.rules in this project.
+Copy all content into:
+Firebase Console > Firestore Database > Rules > Publish
+
+These are authenticated demo/submission rules. They are intentionally less
+restrictive for alerts/drivers so the complete three-page workflow is stable.
+Unauthenticated users still have no database access.
+
+REQUIRED FIRESTORE DOCUMENTS
+----------------------------
+drivers/driver1
+drivers/driver2
+drivers/driver3
+
+Each must have status: "Available" before assignment.
+
+For a real driver login, users/{Firebase UID} must contain:
+active: true (Boolean)
+role: "DRIVER"
+driverId: "driver1" (or driver2/driver3)
+
+FINAL TEST
+----------
+1. Publish database/firestore.rules.
+2. Close all LifeLine tabs and press Ctrl+F5 after reopening.
+3. Patient sends SOS/emergency.
+4. Hospital accepts it.
+5. Hospital clicks Assign Driver and enters driver1.
+6. Firestore alert must show:
+   driverId: driver1
+   assignedDriverId: driver1
+   assignedDriver: driver1
+   driverAssigned: true
+   driverStatus: Assigned
+7. drivers/driver1 must become Busy.
+8. Open driver-requests.html as driver1 or ADMIN demo Driver 1.
+9. Click the red Enable Emergency Alarm button once.
+10. Assignment appears and alarm rings.
+11. Accept > Start Trip > Mark Arrived > Complete Trip.
+12. drivers/driver1 becomes Available again.
+
+IMPORTANT
+---------
+Use separate browser sessions for Patient, Hospital and Driver because Firebase
+keeps only one signed-in account per browser profile.

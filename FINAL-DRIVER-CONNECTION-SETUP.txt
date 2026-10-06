@@ -1,0 +1,33 @@
+LIFELINE AI - FINAL DRIVER CONNECTION SETUP
+============================================
+
+WHAT WAS FIXED
+1. Driver 1, Driver 2, and Driver 3 switcher restored for DRIVER and ADMIN roles.
+2. Driver status updates now use the selected driver document and updatedAt timestamp.
+3. Driver alerts accept assignedDriver, assignedDriverId, or driverId fields.
+4. Hospital assignment remains transactional and reserves the selected driver.
+5. Firestore rules now support the original multi-driver demo workflow.
+
+MANDATORY FIREBASE STEP
+1. Open database/firestore.rules from this project.
+2. Firebase Console -> Firestore Database -> Rules.
+3. Replace all existing rules and click Publish.
+
+MANDATORY USER PROFILE STEP
+The signed-in driver Firebase account still needs a users/{AUTH_UID} profile:
+- role: DRIVER (String)
+- active: true (Boolean)
+- driverId: driver1 (String; driver1/driver2/driver3 is accepted)
+
+Your drivers collection is already correct when it contains:
+- drivers/driver1
+- drivers/driver2
+- drivers/driver3
+
+TEST ORDER
+A. Patient account: send SOS.
+B. Hospital account: accept -> assign driver2.
+C. Driver account: open driver-requests.html, switch to Driver 2, accept.
+D. Open driver.html, continue navigation, then complete.
+
+Use separate browser profiles or Incognito windows for Patient, Hospital, and Driver.

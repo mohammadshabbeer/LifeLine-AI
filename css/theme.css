@@ -1,0 +1,835 @@
+/* =========================================
+   GLOBAL LIGHT / DARK THEME
+========================================= */
+
+:root {
+    color-scheme: light;
+
+    --page-bg: #f4f7fb;
+    --card-bg: #ffffff;
+    --card-secondary-bg: #f8fafc;
+
+    --text-primary: #172337;
+    --text-secondary: #667085;
+    --text-muted: #8490a3;
+
+    --border-color: #e5eaf0;
+
+    --sidebar-bg: #0f4c81;
+    --sidebar-text: #ffffff;
+    --sidebar-hover: rgba(255, 255, 255, 0.14);
+    --sidebar-active: rgba(255, 255, 255, 0.22);
+
+    --topbar-bg: #ffffff;
+
+    --input-bg: #ffffff;
+    --input-text: #172337;
+
+    --shadow-color: rgba(31, 42, 55, 0.09);
+
+    --primary-color: #1976d2;
+    --success-color: #16834c;
+    --danger-color: #d32f2f;
+    --warning-color: #ef8c00;
+}
+
+/* =========================================
+   DARK MODE VARIABLES
+========================================= */
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+
+    --page-bg: #0f172a;
+    --card-bg: #172033;
+    --card-secondary-bg: #1e293b;
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #c4cfdd;
+    --text-muted: #94a3b8;
+
+    --border-color: #334155;
+
+    --sidebar-bg: #09111f;
+    --sidebar-text: #f8fafc;
+    --sidebar-hover: rgba(255, 255, 255, 0.08);
+    --sidebar-active: rgba(25, 118, 210, 0.28);
+
+    --topbar-bg: #172033;
+
+    --input-bg: #1e293b;
+    --input-text: #f1f5f9;
+
+    --shadow-color: rgba(0, 0, 0, 0.35);
+
+    --primary-color: #60a5fa;
+    --success-color: #4ade80;
+    --danger-color: #f87171;
+    --warning-color: #fbbf24;
+}
+
+/* =========================================
+   GLOBAL ELEMENTS
+========================================= */
+
+html,
+body {
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.main {
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+}
+
+.sidebar {
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+}
+
+.sidebar h1,
+.sidebar h2,
+.sidebar a {
+    color: var(--sidebar-text);
+}
+
+.sidebar a:hover {
+    background: var(--sidebar-hover);
+}
+
+.sidebar a.active {
+    background: var(--sidebar-active);
+}
+
+.topbar {
+    background: var(--topbar-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    box-shadow: 0 5px 18px var(--shadow-color);
+}
+
+.topbar h1,
+.topbar h2,
+.topbar h3 {
+    color: var(--text-primary);
+}
+
+.topbar p,
+#clock {
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   COMMON CARDS
+========================================= */
+
+.emergency-card,
+.driverStatus,
+.driver-empty-state,
+.requests-header,
+.completed-stat-card,
+.completed-trip-card,
+.completed-empty,
+.profile-stat-card,
+.profile-section-card,
+.dashboard-card,
+.stat-card,
+.card,
+.panel,
+.form-container,
+.tracking-card,
+.status-card {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    box-shadow: 0 8px 28px var(--shadow-color);
+}
+
+.emergency-card h1,
+.emergency-card h2,
+.emergency-card h3,
+.emergency-card h4,
+.driverStatus h1,
+.driverStatus h2,
+.driverStatus h3,
+.completed-trip-card h1,
+.completed-trip-card h2,
+.completed-trip-card h3,
+.profile-section-card h1,
+.profile-section-card h2,
+.profile-section-card h3,
+.card h1,
+.card h2,
+.card h3,
+.panel h1,
+.panel h2,
+.panel h3 {
+    color: var(--text-primary);
+}
+
+.emergency-card p,
+.driverStatus p,
+.completed-trip-card p,
+.profile-section-card p,
+.card p,
+.panel p {
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+
+input,
+select,
+textarea {
+    background: var(--input-bg);
+    color: var(--input-text);
+    border-color: var(--border-color);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* =========================================
+   TABLES
+========================================= */
+
+table {
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+th {
+    background: var(--card-secondary-bg);
+    color: var(--text-primary);
+}
+
+td,
+th {
+    border-color: var(--border-color);
+}
+
+tr:hover {
+    background: var(--card-secondary-bg);
+}
+
+/* =========================================
+   PROFILE PAGE FIXES
+========================================= */
+
+.profile-detail-item,
+.profile-mini-stat-grid div,
+.profile-achievement-item,
+.completed-symptoms {
+    background: var(--card-secondary-bg);
+    border-color: var(--border-color);
+}
+
+.profile-detail-item strong,
+.profile-stat-content h2,
+.profile-achievement-item h3,
+.trip-detail strong,
+.completed-symptoms p {
+    color: var(--text-primary);
+}
+
+.profile-detail-item span,
+.profile-stat-content p,
+.profile-stat-content span,
+.profile-achievement-item p,
+.trip-detail span {
+    color: var(--text-secondary);
+}
+
+.profile-progress-bar {
+    background: var(--border-color);
+}
+
+.profile-modal-content {
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.profile-modal-header h2 {
+    color: var(--text-primary);
+}
+
+.profile-modal-close {
+    background: var(--card-secondary-bg);
+    color: var(--text-primary);
+}
+
+/* =========================================
+   COMPLETED TRIPS PAGE FIXES
+========================================= */
+
+.completed-trip-top {
+    border-color: var(--border-color);
+}
+
+.completed-heading h2,
+.completed-empty h2 {
+    color: var(--text-primary);
+}
+
+.completed-heading p,
+.completed-empty p,
+.completed-date {
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   THEME TOGGLE BUTTON
+========================================= */
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-width: 118px;
+    padding: 10px 14px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    background: var(--card-secondary-bg);
+    color: var(--text-primary);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+}
+
+.theme-toggle-icon {
+    font-size: 17px;
+}
+
+/* =========================================
+   SMOOTH THEME TRANSITION
+========================================= */
+
+body,
+.main,
+.sidebar,
+.topbar,
+.card,
+.panel,
+.emergency-card,
+.driverStatus,
+.completed-stat-card,
+.completed-trip-card,
+.profile-stat-card,
+.profile-section-card,
+input,
+select,
+textarea {
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+    .theme-toggle {
+        min-width: auto;
+        padding: 9px 11px;
+    }
+
+    .theme-toggle-text {
+        display: none;
+    }
+
+}
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .topbar-actions {
+        gap: 8px;
+    }
+
+}
+/* =========================================
+   DRIVER AND HOSPITAL DARK MODE FIX
+   Paste this at the bottom of theme.css
+========================================= */
+
+/* Driver emergency cards */
+
+html[data-theme="dark"] .emergency-card {
+    background: #172033 !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .emergency-card h1,
+html[data-theme="dark"] .emergency-card h2,
+html[data-theme="dark"] .emergency-card h3,
+html[data-theme="dark"] .emergency-card h4 {
+    color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .emergency-card h2:first-child,
+html[data-theme="dark"] .emergency-card .emergency-title {
+    color: #ff5a5f !important;
+}
+
+html[data-theme="dark"] .emergency-card p,
+html[data-theme="dark"] .emergency-card .detail,
+html[data-theme="dark"] .emergency-card .emergency-detail {
+    color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .emergency-card strong,
+html[data-theme="dark"] .emergency-card b {
+    color: #f8fafc !important;
+}
+
+/* Driver request cards */
+
+html[data-theme="dark"] .request-card {
+    background: #172033 !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .request-card h1,
+html[data-theme="dark"] .request-card h2,
+html[data-theme="dark"] .request-card h3 {
+    color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .request-card p,
+html[data-theme="dark"] .request-card label {
+    color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .request-card strong,
+html[data-theme="dark"] .request-card b {
+    color: #ffffff !important;
+}
+
+/* Driver status panel */
+
+html[data-theme="dark"] .driverStatus,
+html[data-theme="dark"] .driver-status {
+    background: #172033 !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .driverStatus h1,
+html[data-theme="dark"] .driverStatus h2,
+html[data-theme="dark"] .driverStatus h3,
+html[data-theme="dark"] .driver-status h1,
+html[data-theme="dark"] .driver-status h2,
+html[data-theme="dark"] .driver-status h3 {
+    color: #f8fafc !important;
+}
+
+/* Hospital emergency cards */
+
+html[data-theme="dark"] .alert-card,
+html[data-theme="dark"] .hospital-card,
+html[data-theme="dark"] .case-card {
+    background: #172033 !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .alert-card h1,
+html[data-theme="dark"] .alert-card h2,
+html[data-theme="dark"] .alert-card h3,
+html[data-theme="dark"] .hospital-card h1,
+html[data-theme="dark"] .hospital-card h2,
+html[data-theme="dark"] .hospital-card h3,
+html[data-theme="dark"] .case-card h1,
+html[data-theme="dark"] .case-card h2,
+html[data-theme="dark"] .case-card h3 {
+    color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .alert-card p,
+html[data-theme="dark"] .hospital-card p,
+html[data-theme="dark"] .case-card p {
+    color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .alert-card strong,
+html[data-theme="dark"] .hospital-card strong,
+html[data-theme="dark"] .case-card strong {
+    color: #ffffff !important;
+}
+
+/* Hospital dashboard statistic cards */
+
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .stats-card,
+html[data-theme="dark"] .dashboard-card,
+html[data-theme="dark"] .analytics-card,
+html[data-theme="dark"] .status-card {
+    background: #172033 !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .stat-card h1,
+html[data-theme="dark"] .stat-card h2,
+html[data-theme="dark"] .stat-card h3,
+html[data-theme="dark"] .stats-card h1,
+html[data-theme="dark"] .stats-card h2,
+html[data-theme="dark"] .dashboard-card h1,
+html[data-theme="dark"] .dashboard-card h2,
+html[data-theme="dark"] .analytics-card h1,
+html[data-theme="dark"] .analytics-card h2,
+html[data-theme="dark"] .status-card h1,
+html[data-theme="dark"] .status-card h2 {
+    color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .stat-card p,
+html[data-theme="dark"] .stats-card p,
+html[data-theme="dark"] .dashboard-card p,
+html[data-theme="dark"] .analytics-card p,
+html[data-theme="dark"] .status-card p {
+    color: #cbd5e1 !important;
+}
+
+/* Inputs and dropdowns */
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+html[data-theme="dark"] option {
+    background: #1e293b;
+    color: #f8fafc;
+}
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Keep action-button text visible */
+
+html[data-theme="dark"] .emergency-card button,
+html[data-theme="dark"] .request-card button,
+html[data-theme="dark"] .alert-card button,
+html[data-theme="dark"] .hospital-card button,
+html[data-theme="dark"] .case-card button {
+    color: #ffffff !important;
+}
+
+/* Empty-state and filter panels */
+
+html[data-theme="dark"] .driver-empty-state,
+html[data-theme="dark"] .completed-empty,
+html[data-theme="dark"] .requests-header,
+html[data-theme="dark"] .filter-container,
+html[data-theme="dark"] .filters {
+    background: #172033 !important;
+    color: #f1f5f9 !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .driver-empty-state p,
+html[data-theme="dark"] .completed-empty p,
+html[data-theme="dark"] .requests-header p,
+html[data-theme="dark"] .filter-container label,
+html[data-theme="dark"] .filters label {
+    color: #cbd5e1 !important;
+}
+/* =========================================
+   DRIVER DASHBOARD CARD FIX
+========================================= */
+
+.driver-card.theme-emergency-card {
+    background: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.driver-card.theme-emergency-card h2 {
+    color: #ef2b35 !important;
+}
+
+.driver-card.theme-emergency-card p {
+    color: var(--text-secondary) !important;
+}
+
+.driver-card.theme-emergency-card p b {
+    color: var(--text-primary) !important;
+}
+
+/* Dark mode */
+
+html[data-theme="dark"] .driver-card.theme-emergency-card {
+    background: #172033 !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+html[data-theme="dark"] .driver-card.theme-emergency-card h2 {
+    color: #ff525d !important;
+}
+
+html[data-theme="dark"] .driver-card.theme-emergency-card p {
+    color: #cbd5e1 !important;
+}
+
+html[data-theme="dark"] .driver-card.theme-emergency-card p b {
+    color: #ffffff !important;
+}
+
+/* Keep all driver buttons visible */
+
+html[data-theme="dark"] .driver-card.theme-emergency-card button {
+    color: #ffffff !important;
+}
+
+/* Waiting message */
+
+.theme-empty-message {
+    padding: 35px;
+    text-align: center;
+    border-radius: 16px;
+    background: var(--card-bg);
+    color: var(--text-secondary);
+}
+
+.theme-empty-message h2 {
+    margin: 0;
+    color: var(--text-secondary) !important;
+}
+
+html[data-theme="dark"] .theme-empty-message {
+    background: #172033;
+}
+
+html[data-theme="dark"] .theme-empty-message h2 {
+    color: #cbd5e1 !important;
+}
+/* =========================================
+   SHARED DRIVER SWITCHER
+========================================= */
+
+.shared-driver-switcher {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid var(--border-color, #dbe3ec);
+    border-radius: 18px;
+    background: var(--card-bg, #ffffff);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.shared-driver-switcher-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.shared-driver-switcher-header h2 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+}
+
+.shared-driver-switcher-header p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.shared-current-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    color: #334155;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.shared-driver-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.shared-driver-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 74px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    background: transparent;
+    color: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.shared-driver-button:hover {
+    transform: translateY(-2px);
+    border-color: #2563eb;
+}
+
+.shared-driver-button.active {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.shared-driver-button-status {
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.status-available {
+    color: #15803d;
+}
+
+.status-busy {
+    color: #dc2626;
+}
+
+.status-on-leave,
+.status-leave {
+    color: #d97706;
+}
+
+.status-completed {
+    color: #2563eb;
+}
+
+.status-not-found {
+    color: #64748b;
+}
+
+.shared-driver-button.active
+.shared-driver-button-status {
+    color: #ffffff;
+}
+
+.shared-current-status.status-available {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.shared-current-status.status-busy {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.shared-current-status.status-on-leave,
+.shared-current-status.status-leave {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.shared-current-status.status-completed {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+html[data-theme="dark"]
+.shared-driver-switcher {
+    background: #111827;
+    border-color: #334155;
+}
+
+html[data-theme="dark"]
+.shared-driver-button {
+    border-color: #475569;
+    color: #f8fafc;
+}
+
+html[data-theme="dark"]
+.shared-driver-button.active {
+    border-color: #2563eb;
+    background: #2563eb;
+}
+
+@media (max-width: 700px) {
+    .shared-driver-switcher-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .shared-driver-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+#driverSwitcher {
+    width: 100%;
+    margin-top: 18px;
+    margin-bottom: 22px;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 700px) {
+    .topbar-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

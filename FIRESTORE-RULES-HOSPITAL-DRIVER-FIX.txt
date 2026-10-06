@@ -1,0 +1,84 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userPath() {
+      return /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    function hasProfile() {
+      return signedIn() && exists(userPath());
+    }
+
+    function profile() {
+      return get(userPath()).data;
+    }
+
+    function active() {
+      return hasProfile() && profile().active == true;
+    }
+
+    function roleIs(value) {
+      return active() && profile().role == value;
+    }
+
+    function admin() {
+      return roleIs("ADMIN") || roleIs("Admin");
+    }
+
+    function hospital() {
+      return roleIs("HOSPITAL") || roleIs("Hospital");
+    }
+
+    function staff() {
+      return admin() || hospital();
+    }
+
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || admin());
+      allow create, update, delete: if admin();
+    }
+
+    // Stable authenticated demo rules for the hospital-driver workflow.
+    // They remove the role-field mismatch that previously blocked assignment,
+    // driver status changes and emergency progress updates.
+    match /drivers/{driverId} {
+      allow read, create, update: if signedIn();
+      allow delete: if false;
+    }
+
+    match /alerts/{alertId} {
+      allow read, create, update: if signedIn();
+      allow delete: if staff();
+    }
+
+    match /notifications/{notificationId} {
+      allow read, create, update: if signedIn();
+      allow delete: if staff();
+    }
+
+    match /patients/{patientId} {
+      allow read, create, update: if staff();
+      allow delete: if admin();
+    }
+
+    match /bills/{billId} {
+      allow read, create, update: if staff();
+      allow delete: if admin();
+    }
+
+    match /loginAudit/{auditId} {
+      allow create: if signedIn();
+      allow read, update, delete: if admin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

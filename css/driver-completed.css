@@ -1,0 +1,242 @@
+.completed-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.completed-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.completed-stat-card .stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    background: #eef7ff;
+    font-size: 25px;
+}
+
+.completed-stat-card p {
+    margin: 0 0 7px;
+    color: #697386;
+}
+
+.completed-stat-card h2 {
+    margin: 0;
+    color: #152238;
+    font-size: 28px;
+}
+
+.completed-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0 20px;
+}
+
+.completed-heading h2 {
+    margin: 0 0 6px;
+}
+
+.completed-heading p {
+    margin: 0;
+    color: #697386;
+}
+
+.completed-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    background: #eafbf1;
+    color: #16834c;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.completed-status span {
+    width: 9px;
+    height: 9px;
+    background: #19ad62;
+    border-radius: 50%;
+    animation: completedPulse 1.5s infinite;
+}
+
+@keyframes completedPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(25, 173, 98, 0.45);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(25, 173, 98, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(25, 173, 98, 0);
+    }
+}
+
+#completedTripsContainer {
+    display: grid;
+    gap: 20px;
+}
+
+.completed-trip-card {
+    padding: 24px;
+    background: white;
+    border-radius: 18px;
+    border-left: 5px solid #1cad63;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.completed-trip-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.completed-trip-top h3 {
+    margin: 12px 0 0;
+    color: #172337;
+}
+
+.completed-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    background: #e9faef;
+    color: #16834c;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.completed-date {
+    color: #667085;
+    font-size: 14px;
+}
+
+.completed-trip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    padding: 22px 0;
+}
+
+.trip-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.trip-detail span,
+.completed-symptoms span {
+    color: #7a8495;
+    font-size: 13px;
+}
+
+.trip-detail strong {
+    color: #1e293b;
+    word-break: break-word;
+}
+
+.completed-symptoms {
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.completed-symptoms p {
+    margin: 8px 0 0;
+    color: #344054;
+}
+
+.completed-trip-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+    color: #16834c;
+    font-weight: 600;
+}
+
+.completed-call-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: #1565c0;
+    color: white;
+    text-decoration: none;
+    border-radius: 9px;
+}
+
+.completed-call-button:hover {
+    background: #0d4e9b;
+}
+
+.completed-empty {
+    padding: 60px 25px;
+    background: white;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+.completed-empty-icon {
+    margin-bottom: 15px;
+    font-size: 55px;
+}
+
+.completed-empty h2 {
+    margin-bottom: 10px;
+}
+
+.completed-empty p {
+    margin: 0;
+    color: #697386;
+}
+
+@media screen and (max-width: 900px) {
+
+    .completed-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .completed-trip-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .completed-heading,
+    .completed-trip-top,
+    .completed-trip-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .completed-trip-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
